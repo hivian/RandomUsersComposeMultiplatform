@@ -1,7 +1,7 @@
 package datasources.local
 
+import androidx.room.BuiltInTypeConverters
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import datasources.local.converters.LocationConverter
@@ -11,8 +11,8 @@ import datasources.local.dao.IRandomUsersDao
 import com.hivian.kmp_mvvm.datasources.models.RandomUserDTO
 
 @Database(entities = [RandomUserDTO::class], version = AppDatabase.DB_VERSION, exportSchema = false)
-@TypeConverters(NameConverter::class, LocationConverter::class, PictureConverter::class)
-abstract class AppDatabase : RoomDatabase() {
+@TypeConverters(NameConverter::class, LocationConverter::class, PictureConverter::class, builtInTypeConverters = BuiltInTypeConverters())
+abstract class AppDatabase : RoomDatabase(){
 
     abstract fun randomUsersDao() : IRandomUsersDao
 
@@ -23,3 +23,5 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
 }
+
+

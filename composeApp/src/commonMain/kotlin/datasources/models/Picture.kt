@@ -1,5 +1,8 @@
-package com.hivian.kmp_mvvm.datasources.models
+package datasources.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Picture(
 
     val large: String,

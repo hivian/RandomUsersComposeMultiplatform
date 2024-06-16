@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import com.hivian.kmp_mvvm.datasources.models.Name
+import datasources.models.Name
 import com.hivian.kmp_mvvm.datasources.models.RandomUserDTO
 
 @Dao

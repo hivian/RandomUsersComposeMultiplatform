@@ -1,7 +1,7 @@
 package datasources.local.converters
 
 import androidx.room.TypeConverter
-import com.hivian.kmp_mvvm.datasources.models.Name
+import datasources.models.Name
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
