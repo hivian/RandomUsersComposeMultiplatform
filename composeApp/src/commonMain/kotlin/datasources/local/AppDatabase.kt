@@ -7,7 +7,7 @@ import datasources.local.converters.LocationConverter
 import datasources.local.converters.NameConverter
 import datasources.local.converters.PictureConverter
 import datasources.local.dao.IRandomUsersDao
-import com.hivian.kmp_mvvm.datasources.models.RandomUserDTO
+import datasources.models.RandomUserDTO
 
 @Database(entities = [RandomUserDTO::class], version = AppDatabase.DB_VERSION, exportSchema = false)
 @TypeConverters(NameConverter::class, LocationConverter::class, PictureConverter::class)

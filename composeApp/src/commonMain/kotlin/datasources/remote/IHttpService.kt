@@ -1,12 +1,11 @@
 package datasources.remote
 
-/*
-import retrofit2.HttpException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
-import java.util.concurrent.CancellationException
+import kotlin.reflect.KClass
+
 
 interface IHttpService {
+
+    suspend fun <T : Any> get(url: String, ofClass: KClass<T>): HttpResult<T>
 
     suspend fun <T : Any> safeApiCall(call: suspend () -> T) : HttpResult<T> {
         return try {
@@ -33,4 +32,4 @@ interface IHttpService {
         }
     }
 
-}*/
+}

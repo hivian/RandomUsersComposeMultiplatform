@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import datasources.models.Name
-import com.hivian.kmp_mvvm.datasources.models.RandomUserDTO
+import datasources.models.RandomUserDTO
 
 @Dao
 interface IRandomUsersDao {
