@@ -51,6 +51,8 @@ kotlin {
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
             implementation(libs.kotlinx.serialization)
+            implementation(libs.navigation.compose)
+            implementation(libs.kotlin.atomicfu)
         }
     }
 
