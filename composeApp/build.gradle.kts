@@ -14,6 +14,10 @@ plugins {
 
 kotlin {
 
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
+    }
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -95,5 +99,13 @@ room {
 }
 
 dependencies {
-    ksp(libs.room.compiler)
+    //ksp(libs.room.compiler)
+    add("kspCommonMainMetadata", libs.room.compiler)
 }
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata" ) {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
+}
+

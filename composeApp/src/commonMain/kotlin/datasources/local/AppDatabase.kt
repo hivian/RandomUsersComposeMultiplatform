@@ -1,6 +1,5 @@
 package datasources.local
 
-import androidx.room.BuiltInTypeConverters
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -11,8 +10,8 @@ import datasources.local.dao.IRandomUsersDao
 import com.hivian.kmp_mvvm.datasources.models.RandomUserDTO
 
 @Database(entities = [RandomUserDTO::class], version = AppDatabase.DB_VERSION, exportSchema = false)
-@TypeConverters(NameConverter::class, LocationConverter::class, PictureConverter::class, builtInTypeConverters = BuiltInTypeConverters())
-abstract class AppDatabase : RoomDatabase(){
+@TypeConverters(NameConverter::class, LocationConverter::class, PictureConverter::class)
+abstract class AppDatabase : RoomDatabase(), DB {
 
     abstract fun randomUsersDao() : IRandomUsersDao
 
@@ -22,6 +21,14 @@ abstract class AppDatabase : RoomDatabase(){
         const val DB_VERSION = 1
     }
 
+    override fun clearAllTables() {
+        super.clearAllTables()
+    }
+
 }
 
-
+// FIXME: Added a hack to resolve below issue:
+// Class 'AppDatabase_Impl' is not abstract and does not implement abstract base class member 'clearAllTables'.
+interface DB {
+    fun clearAllTables() {}
+}
