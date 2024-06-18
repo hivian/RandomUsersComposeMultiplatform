@@ -14,20 +14,20 @@ import servicelocator.IoC
 
 internal class RandomUsersRepository: IRandomUsersRepository {
 
-    private val database = IoC.resolve<IRandomUsersDatabaseService>()
+    private val randomUsersDatabaseService = IoC.resolve<IRandomUsersDatabaseService>()
 
-    private val httpClient = IoC.resolve<IRandomUsersHttpService>()
+    private val randomUsersHttpService = IoC.resolve<IRandomUsersHttpService>()
 
     override suspend fun getUserById(userId: Int, imageSize: ImageSize): ServiceResult<RandomUser> {
         return runCatching {
-            ServiceResult.Success(database.getUserById(userId).mapToRandomUser(imageSize))
+            ServiceResult.Success(randomUsersDatabaseService.getUserById(userId).mapToRandomUser(imageSize))
         }.getOrDefault(
             ServiceResult.Error(ErrorType.DATABASE_ERROR)
         )
     }
 
     override suspend fun fetchRandomUsers(pageIndex: Int, pageSize: Int): ServiceResult<List<RandomUser>> {
-        val httpUsersResult = httpClient.fetchRandomUsers(pageIndex, pageSize)
+        val httpUsersResult = randomUsersHttpService.fetchRandomUsers(pageIndex, pageSize)
         val databaseUserResult = fetchDatabaseUsers(pageIndex, pageSize)
 
         return when (httpUsersResult) {
@@ -37,7 +37,7 @@ internal class RandomUsersRepository: IRandomUsersRepository {
                 if (users.isEmpty()) {
                     ServiceResult.Error(ErrorType.NO_RESULT, databaseUserResult)
                 } else {
-                    database.upsertUsers(users)
+                    randomUsersDatabaseService.upsertUsers(users)
                     ServiceResult.Success(fetchDatabaseUsers(pageIndex, pageSize))
                 }
             }
@@ -48,7 +48,7 @@ internal class RandomUsersRepository: IRandomUsersRepository {
     }
 
     private suspend fun fetchDatabaseUsers(pageIndex: Int, pageSize: Int): List<RandomUser> {
-        return database
+        return randomUsersDatabaseService
             .fetchUsers(pageIndex, pageSize)
             .mapToRandomUsers(ImageSize.MEDIUM)
     }
