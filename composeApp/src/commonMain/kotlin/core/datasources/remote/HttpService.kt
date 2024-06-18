@@ -37,11 +37,6 @@ class HttpService(baseUrl: String): IHttpService {
         install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL
-            logger = object: Logger {
-                override fun log(message: String) {
-
-                }
-            }
         }
         defaultRequest {
             header("Content-Type", "application/json")
