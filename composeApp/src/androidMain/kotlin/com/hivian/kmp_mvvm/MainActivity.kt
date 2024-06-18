@@ -1,6 +1,5 @@
 package com.hivian.kmp_mvvm
 
-import App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
