@@ -1,19 +1,19 @@
-package com.hivian.kmp_mvvm.core.datasources.local.converters
+package com.hivian.kmp_mvvm.core.datasources.database.converters
 
 import androidx.room.TypeConverter
-import com.hivian.kmp_mvvm.core.datasources.models.Name
+import com.hivian.kmp_mvvm.core.datasources.models.Picture
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-class NameConverter {
+class PictureConverter {
 
     @TypeConverter
-    fun nameToJson(value: Name): String {
+    fun pictureToJson(value: Picture): String {
         return Json.encodeToString(value)
     }
 
     @TypeConverter
-    fun jsonToName(value: String): Name {
+    fun jsonToPicture(value: String): Picture {
         return Json.decodeFromString(value)
     }
 }

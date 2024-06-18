@@ -1,12 +1,12 @@
-package com.hivian.kmp_mvvm.core.datasources.local
+package com.hivian.kmp_mvvm.core.datasources.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.hivian.kmp_mvvm.core.datasources.local.converters.LocationConverter
-import com.hivian.kmp_mvvm.core.datasources.local.converters.NameConverter
-import com.hivian.kmp_mvvm.core.datasources.local.converters.PictureConverter
-import com.hivian.kmp_mvvm.core.datasources.local.dao.IRandomUsersDao
+import com.hivian.kmp_mvvm.core.datasources.database.converters.LocationConverter
+import com.hivian.kmp_mvvm.core.datasources.database.converters.NameConverter
+import com.hivian.kmp_mvvm.core.datasources.database.converters.PictureConverter
+import com.hivian.kmp_mvvm.core.datasources.database.dao.IRandomUsersDao
 import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
 
 @Database(entities = [RandomUserDTO::class], version = AppDatabase.DB_VERSION, exportSchema = false)

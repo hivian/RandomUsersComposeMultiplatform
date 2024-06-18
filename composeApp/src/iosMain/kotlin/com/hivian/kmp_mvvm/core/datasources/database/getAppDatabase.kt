@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.core.datasources.local
+package com.hivian.kmp_mvvm.core.datasources.database
 
 import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver

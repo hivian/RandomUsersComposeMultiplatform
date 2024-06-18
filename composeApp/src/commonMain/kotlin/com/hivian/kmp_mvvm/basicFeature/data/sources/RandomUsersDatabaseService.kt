@@ -2,7 +2,7 @@ package com.hivian.kmp_mvvm.basicFeature.data.sources
 
 import com.hivian.kmp_mvvm.basicFeature.domain.services.IRandomUsersDatabaseService
 import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
-import com.hivian.kmp_mvvm.core.datasources.local.AppDatabase
+import com.hivian.kmp_mvvm.core.datasources.database.AppDatabase
 
 internal class RandomUsersDatabaseService(
     private val databaseService: AppDatabase

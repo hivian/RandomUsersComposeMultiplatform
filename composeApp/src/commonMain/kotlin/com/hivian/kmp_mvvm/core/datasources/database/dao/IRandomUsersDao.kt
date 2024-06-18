@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.core.datasources.local.dao
+package com.hivian.kmp_mvvm.core.datasources.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
