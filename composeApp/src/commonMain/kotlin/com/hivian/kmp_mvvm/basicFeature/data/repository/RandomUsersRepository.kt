@@ -7,12 +7,12 @@ import com.hivian.kmp_mvvm.basicFeature.data.mappers.mapToRandomUsers
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.basicFeature.domain.repository.IRandomUsersRepository
 import com.hivian.kmp_mvvm.basicFeature.domain.services.IApiService
-import com.hivian.kmp_mvvm.basicFeature.domain.services.IRandomUsersDatabaseService
+import com.hivian.kmp_mvvm.basicFeature.domain.services.IDatabaseService
 import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
 import com.hivian.kmp_mvvm.core.datasources.remote.HttpResult
 
 internal class RandomUsersRepository(
-    private val randomUsersDatabaseService: IRandomUsersDatabaseService,
+    private val randomUsersDatabaseService: IDatabaseService,
     private val randomUsersHttpService: IApiService
 ): IRandomUsersRepository {
 

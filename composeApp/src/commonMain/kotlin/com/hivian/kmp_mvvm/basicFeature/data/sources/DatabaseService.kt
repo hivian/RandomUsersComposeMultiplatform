@@ -1,12 +1,12 @@
 package com.hivian.kmp_mvvm.basicFeature.data.sources
 
-import com.hivian.kmp_mvvm.basicFeature.domain.services.IRandomUsersDatabaseService
+import com.hivian.kmp_mvvm.basicFeature.domain.services.IDatabaseService
 import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
 import com.hivian.kmp_mvvm.core.datasources.database.AppDatabase
 
-internal class RandomUsersDatabaseService(
+internal class DatabaseService(
     private val databaseService: AppDatabase
-): IRandomUsersDatabaseService {
+): IDatabaseService {
 
     override suspend fun getUserById(userId: Int): RandomUserDTO {
         return databaseService.randomUsersDao().getRandomUserById(userId)

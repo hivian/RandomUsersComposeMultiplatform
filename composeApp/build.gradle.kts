@@ -57,6 +57,8 @@ kotlin {
             implementation(libs.kotlinx.serialization)
             implementation(libs.navigation.compose)
             implementation(libs.kotlin.atomicfu)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.compose.ktor)
 
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)

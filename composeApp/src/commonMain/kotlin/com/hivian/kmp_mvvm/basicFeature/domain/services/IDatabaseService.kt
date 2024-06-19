@@ -2,7 +2,7 @@ package com.hivian.kmp_mvvm.basicFeature.domain.services
 
 import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
 
-interface IRandomUsersDatabaseService {
+interface IDatabaseService {
 
     suspend fun getUserById(userId: Int): RandomUserDTO
 
