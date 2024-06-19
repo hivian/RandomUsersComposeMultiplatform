@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImagePainter
 import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
@@ -31,10 +30,11 @@ import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
+import org.koin.compose.koinInject
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = viewModel()
+    viewModel: HomeViewModel = koinInject()
 ) {
     viewModel.initialize()
 
@@ -61,7 +61,7 @@ fun HomeContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = viewModelArg.title) },
+                title = { Text(text = viewModelArg.title.value) },
             )
         }
     ) { contentPadding ->

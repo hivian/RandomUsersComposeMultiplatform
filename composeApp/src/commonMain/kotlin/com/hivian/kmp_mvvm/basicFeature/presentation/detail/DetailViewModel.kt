@@ -8,13 +8,12 @@ import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.NavigateBackU
 import com.hivian.kmp_mvvm.core.base.ViewModelBase
 import com.hivian.kmp_mvvm.core.datasources.ServiceResult
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.ShowAppMessageUseCase
-import com.hivian.kmp_mvvm.basicFeature.presentation.di.UserId
 import com.hivian.kmp_mvvm.core.extensions.toErrorMessage
 import kotlinx.coroutines.launch
 
 
 class DetailViewModel(
-    @UserId private val userId: Int,
+    private val userId: Int,
     private val translateResourceUseCase: TranslateResourceUseCase,
     private val getRandomUserByIdUseCase: GetRandomUserByIdUseCase,
     private val showAppMessageUseCase: ShowAppMessageUseCase,

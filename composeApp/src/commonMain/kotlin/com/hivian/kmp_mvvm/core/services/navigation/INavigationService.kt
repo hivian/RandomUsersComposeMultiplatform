@@ -8,6 +8,6 @@ interface INavigationService {
 
     fun navigateBack(): Boolean
 
-    fun navigateTo(route: String)
+    fun navigateToDetailScreen(userId: Int)
 
 }

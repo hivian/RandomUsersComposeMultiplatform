@@ -22,19 +22,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImagePainter
 import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import kmp_mvvm.composeapp.generated.resources.Res
+import kmp_mvvm.composeapp.generated.resources.ic_cell_24dp
+import kmp_mvvm.composeapp.generated.resources.ic_email_24dp
+import kmp_mvvm.composeapp.generated.resources.ic_local_phone_24dp
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
-fun DetailScreen(viewModel: DetailViewModel = viewModel()) {
+fun DetailScreen(
+    userId: Int,
+    viewModel: DetailViewModel = koinInject(parameters = { parametersOf(userId) })
+) {
     viewModel.initialize()
 
     DetailContent(
@@ -145,9 +153,9 @@ fun UserInfo(email: String, phone: String, cell: String) {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            UserInfoItem(drawableStart = R.drawable.ic_email_24dp, text = email)
-            UserInfoItem(drawableStart = R.drawable.ic_local_phone_24dp, text = phone)
-            UserInfoItem(drawableStart = R.drawable.ic_cell_24dp, text = cell)
+            UserInfoItem(drawableStart = Res.drawable.ic_email_24dp, text = email)
+            UserInfoItem(drawableStart = Res.drawable.ic_local_phone_24dp, text = phone)
+            UserInfoItem(drawableStart = Res.drawable.ic_cell_24dp, text = cell)
         }
     }
 }

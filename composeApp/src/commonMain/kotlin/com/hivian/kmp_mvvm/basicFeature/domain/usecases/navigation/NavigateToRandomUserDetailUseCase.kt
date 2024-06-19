@@ -7,7 +7,7 @@ class NavigateToRandomUserDetailUseCase(
 ) {
 
     operator fun invoke(userId: Int) {
-        navigationService.navigateTo(BasicFeatureScreen.Detail.createRouteWithArgs(userId))
+        navigationService.navigateToDetailScreen(userId)
     }
 
 }

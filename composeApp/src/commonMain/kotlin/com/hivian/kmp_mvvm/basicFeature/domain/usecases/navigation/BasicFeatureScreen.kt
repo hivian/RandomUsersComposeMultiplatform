@@ -17,7 +17,8 @@ sealed class BasicFeatureScreen {
      object Detail : INavigationScreenArgs {
 
          private const val BASE_ROUTE: String = "detail"
-         private const val USER_ID_KEY = "userId"
+
+         const val USER_ID_KEY = "userId"
 
          override val name: String = "$BASE_ROUTE/{$USER_ID_KEY}"
 

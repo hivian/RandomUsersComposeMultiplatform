@@ -9,10 +9,11 @@ import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.BasicFeatureScreen
+import androidx.navigation.navArgument
 import com.hivian.kmp_mvvm.basicFeature.presentation.detail.DetailScreen
 import com.hivian.kmp_mvvm.core.services.IUserInteractionService
 import com.hivian.kmp_mvvm.core.services.navigation.INavigationService
@@ -21,6 +22,17 @@ import com.hivian.kmp_mvvm.basicFeature.presentation.themes.MainTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import org.koin.compose.getKoin
+
+sealed class Screen(val route: String) {
+
+    companion object {
+        const val USER_ID_PARAMETER = "user_id"
+    }
+
+    data object Splash : Screen("splash")
+    data object Home : Screen("home")
+    data object Detail : Screen("detail/{$USER_ID_PARAMETER}")
+}
 
 @Composable
 @Preview
@@ -55,13 +67,20 @@ fun InitNavController(
 
     NavHost(
         navController = navigationService.mainNavController,
-        startDestination = BasicFeatureScreen.Home.name,
+        startDestination = Screen.Home.route,
     ) {
-        composable(route = BasicFeatureScreen.Home.name) {
+        composable(route = Screen.Home.route) {
             HomeScreen()
         }
-        composable(route = BasicFeatureScreen.Detail.name) {
-            DetailScreen()
+        composable(
+            route = Screen.Detail.route,
+            arguments = listOf(
+                navArgument(Screen.USER_ID_PARAMETER) { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            DetailScreen(
+                backStackEntry.arguments!!.getInt(Screen.USER_ID_PARAMETER)
+            )
         }
     }
 }

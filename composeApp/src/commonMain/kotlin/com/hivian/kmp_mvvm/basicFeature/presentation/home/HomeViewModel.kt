@@ -9,13 +9,13 @@ import com.hivian.kmp_mvvm.basicFeature.domain.usecases.LocalizationUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.NavigateToRandomUserDetailUseCase
 import com.hivian.kmp_mvvm.core.base.PaginationViewModel
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
-import com.hivian.kmp_mvvm.core.services.ILocalizationService
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.ShowAppMessageUseCase
 import com.hivian.kmp_mvvm.core.datasources.ServiceResult
 import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
 import com.hivian.kmp_mvvm.core.extensions.toErrorMessage
 import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.home_title
+import kmp_mvvm.composeapp.generated.resources.retry_message
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -32,22 +32,21 @@ class HomeViewModel(
 
     var showLoadMoreLoader = mutableStateOf(false)
 
-    var title : String = localizationUseCase(Res.string.home_title)
+    var title = mutableStateOf("")
 
     var items = mutableStateListOf<RandomUser>()
 
-    val errorMessage : String
-        get() = when (val state = viewModelVisualState.value) {
-            is ViewModelVisualState.Error -> {
-                localizationUseCase(state.errorType.toErrorMessage())
-            }
-            else -> ""
-        }
+    val errorMessage = mutableStateOf("")
 
-    val retryMessage: String = localizationUseCase(R.string.retry_message)
+    val retryMessage = mutableStateOf("")
 
     override fun initialize() {
         if (isInitialized.value) return
+
+        viewModelScope.launch {
+            title.value = localizationUseCase(Res.string.home_title)
+            retryMessage.value = localizationUseCase(Res.string.retry_message)
+        }
 
         loadNext()
 
@@ -87,7 +86,10 @@ class HomeViewModel(
                 updateData(users)
                 viewModelVisualState.value = ViewModelVisualState.Success
             } else {
-                viewModelVisualState.value = ViewModelVisualState.Error(errorType)
+                viewModelScope.launch {
+                    errorMessage.value = localizationUseCase(errorType.toErrorMessage())
+                    viewModelVisualState.value = ViewModelVisualState.Error(errorType)
+                }
             }
             return
         }
