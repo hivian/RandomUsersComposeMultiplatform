@@ -3,21 +3,23 @@ package com.hivian.kmp_mvvm.basicFeature.presentation.home
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
-import com.hivian.compose_mvvm.core.R
-import com.hivian.compose_mvvm.core.datasources.remote.ErrorType
-import com.hivian.compose_mvvm.core.datasources.ServiceResult
-import com.hivian.compose_mvvm.core.extensions.toErrorMessage
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.GetRandomUsersUseCase
+import com.hivian.kmp_mvvm.basicFeature.domain.usecases.LocalizationUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.NavigateToRandomUserDetailUseCase
 import com.hivian.kmp_mvvm.core.base.PaginationViewModel
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
 import com.hivian.kmp_mvvm.core.services.ILocalizationService
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.ShowAppMessageUseCase
+import com.hivian.kmp_mvvm.core.datasources.ServiceResult
+import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
+import com.hivian.kmp_mvvm.core.extensions.toErrorMessage
+import kmp_mvvm.composeapp.generated.resources.Res
+import kmp_mvvm.composeapp.generated.resources.home_title
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val localizationService: ILocalizationService,
+    private val localizationUseCase: LocalizationUseCase,
     private val navigateToRandomUserDetailUseCase: NavigateToRandomUserDetailUseCase,
     private val getRandomUsersUseCase: GetRandomUsersUseCase,
     private val showAppMessageUseCase: ShowAppMessageUseCase
@@ -30,19 +32,19 @@ class HomeViewModel(
 
     var showLoadMoreLoader = mutableStateOf(false)
 
-    var title : String = localizationService.localizedString(R.string.home_title)
+    var title : String = localizationUseCase(Res.string.home_title)
 
     var items = mutableStateListOf<RandomUser>()
 
     val errorMessage : String
         get() = when (val state = viewModelVisualState.value) {
             is ViewModelVisualState.Error -> {
-                localizationService.localizedString(state.errorType.toErrorMessage())
+                localizationUseCase(state.errorType.toErrorMessage())
             }
             else -> ""
         }
 
-    val retryMessage: String = localizationService.localizedString(R.string.retry_message)
+    val retryMessage: String = localizationUseCase(R.string.retry_message)
 
     override fun initialize() {
         if (isInitialized.value) return
@@ -96,7 +98,7 @@ class HomeViewModel(
             showLoadMoreLoader.value = false
             viewModelScope.launch {
                 showAppMessageUseCase(
-                    localizationService.localizedString(errorType.toErrorMessage())
+                    localizationUseCase(errorType.toErrorMessage())
                 )
             }
         }

@@ -1,6 +1,5 @@
 package com.hivian.kmp_mvvm.basicFeature.presentation.home
 
-import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -27,6 +26,7 @@ import coil3.compose.AsyncImagePainter
 import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -53,9 +53,7 @@ fun HomeScreen(
     )
 }
 
-
-@Preview(name = "Light mode")
-@Preview(name = "Dark mode", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview
 @Composable
 fun HomeContent(
     @PreviewParameter(HomeViewModelArgProvider::class) viewModelArg: HomeViewModelArg
@@ -93,7 +91,6 @@ fun HomeContent(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun InitErrorView(
     @PreviewParameter(InitErrorViewArgProvider::class)
@@ -124,7 +121,7 @@ fun InitUserList(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        items(itemContent = randomUsers) { user ->
+        items(randomUsers) { user ->
             UserListItem(user = user, onItemClick = onItemClick)
         }
         if (!isLoadingMore) return@LazyColumn
@@ -156,8 +153,8 @@ fun UserListItem(user: RandomUser, onItemClick : (Int) -> Unit) {
                     .padding(start = 8.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Text(text = user.fullName, style = MaterialTheme.typography.headlineSmall)
-                Text(text = user.email, style = MaterialTheme.typography.bodySmall)
+                Text(text = user.fullName, style = MaterialTheme.typography.h3)
+                Text(text = user.email, style = MaterialTheme.typography.body2)
             }
         }
     }

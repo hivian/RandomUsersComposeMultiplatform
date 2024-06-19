@@ -17,6 +17,7 @@ import com.hivian.kmp_mvvm.basicFeature.presentation.detail.DetailScreen
 import com.hivian.kmp_mvvm.core.services.IUserInteractionService
 import com.hivian.kmp_mvvm.core.services.navigation.INavigationService
 import com.hivian.kmp_mvvm.basicFeature.presentation.home.HomeScreen
+import com.hivian.kmp_mvvm.basicFeature.presentation.themes.MainTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import org.koin.compose.getKoin
@@ -26,8 +27,7 @@ import org.koin.compose.getKoin
 fun App(
     userInteractionService: IUserInteractionService = getKoin().get()
 ) {
-
-    MaterialTheme {
+    MainTheme {
         val snackbarHostState = remember { SnackbarHostState() }
 
         Scaffold(
