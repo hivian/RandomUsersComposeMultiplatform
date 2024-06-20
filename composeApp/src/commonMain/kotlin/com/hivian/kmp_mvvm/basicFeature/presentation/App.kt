@@ -67,11 +67,11 @@ fun InitNavController(
         startDestination = Screen.Home.route,
     ) {
         composable(route = Screen.Home.route) {
-            HomeScreen { userId ->
-                navController.navigate(
-                    Screen.Detail.route.replace(Screen.USER_ID_PARAMETER, "$userId")
-                )
-            }
+            HomeScreen(
+                onNavigateToDetail = { userId ->
+                    navController.navigate(Screen.Detail.route.replace(Screen.USER_ID_PARAMETER, "$userId"))
+                }
+            )
         }
         composable(
             route = Screen.Detail.route,
@@ -80,7 +80,8 @@ fun InitNavController(
             )
         ) { backStackEntry ->
             DetailScreen(
-                backStackEntry.arguments!!.getInt(Screen.USER_ID_PARAMETER)
+                userId = backStackEntry.arguments!!.getInt(Screen.USER_ID_PARAMETER),
+                onNavigateBack = { navController.popBackStack() }
             )
         }
     }

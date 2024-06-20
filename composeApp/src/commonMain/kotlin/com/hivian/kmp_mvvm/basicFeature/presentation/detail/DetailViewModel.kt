@@ -8,6 +8,7 @@ import com.hivian.kmp_mvvm.core.base.ViewModelBase
 import com.hivian.kmp_mvvm.core.datasources.ServiceResult
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.ShowAppMessageUseCase
 import com.hivian.kmp_mvvm.core.extensions.toErrorMessage
+import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
 import kotlinx.coroutines.launch
 
 
@@ -16,7 +17,6 @@ class DetailViewModel(
     private val translateResourceUseCase: TranslateResourceUseCase,
     private val getRandomUserByIdUseCase: GetRandomUserByIdUseCase,
     private val showAppMessageUseCase: ShowAppMessageUseCase,
-    private val navigateBackUseCase: NavigateBackUseCase
 ): ViewModelBase() {
 
     val picture = mutableStateOf("")
@@ -65,7 +65,7 @@ class DetailViewModel(
     }
 
     fun navigateBack() {
-        navigateBackUseCase()
+        _navigationEvent.value = NavigationAction.Back
     }
 
 }

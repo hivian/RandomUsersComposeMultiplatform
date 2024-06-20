@@ -69,6 +69,8 @@ kotlin {
             implementation(libs.koin.compose)
             // required by koin
             implementation(libs.stately.common)
+
+            implementation(libs.maps.compose)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)

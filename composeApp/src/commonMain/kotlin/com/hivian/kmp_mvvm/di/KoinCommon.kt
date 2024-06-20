@@ -1,7 +1,10 @@
 package com.hivian.kmp_mvvm.di
 
-import com.hivian.kmp_mvvm.di.modules.networkModule
+import com.hivian.kmp_mvvm.di.modules.servicesModule
 import com.hivian.kmp_mvvm.di.modules.platformDatabaseModule
+import com.hivian.kmp_mvvm.di.modules.repositoryModule
+import com.hivian.kmp_mvvm.di.modules.useCasesModule
+import com.hivian.kmp_mvvm.di.modules.viewModelModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 
@@ -9,8 +12,11 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
         appDeclaration()
         modules(
-            networkModule,
-            platformDatabaseModule
+            platformDatabaseModule,
+            servicesModule,
+            repositoryModule,
+            useCasesModule,
+            viewModelModule
         )
     }
 

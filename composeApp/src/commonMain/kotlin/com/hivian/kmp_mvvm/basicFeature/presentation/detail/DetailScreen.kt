@@ -18,6 +18,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,6 +28,7 @@ import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
 import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.ic_cell_24dp
 import kmp_mvvm.composeapp.generated.resources.ic_email_24dp
@@ -41,9 +43,17 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun DetailScreen(
     userId: Int,
-    viewModel: DetailViewModel = koinInject(parameters = { parametersOf(userId) })
+    viewModel: DetailViewModel = koinInject(parameters = { parametersOf(userId) }),
+    onNavigateBack: () -> Unit
 ) {
     viewModel.initialize()
+
+    LaunchedEffect(viewModel.navigationEvent) {
+        when (viewModel.navigationEvent.value) {
+            is NavigationAction.Back -> onNavigateBack()
+            else -> Unit
+        }
+    }
 
     DetailContent(
         DetailViewModelArg(
@@ -176,7 +186,7 @@ fun UserInfoItem(drawableStart: DrawableResource, text: String) {
 fun GoogleMapAddress(
     latitude: Double, longitude: Double, city: String, country: String
 ) {
-    val location = LatLng(latitude, longitude)
+    /*val location = LatLng(latitude, longitude)
 
     Card(
         modifier = Modifier
@@ -203,6 +213,6 @@ fun GoogleMapAddress(
                 snippet = country
             )
         }
-    }
+    }*/
 
 }

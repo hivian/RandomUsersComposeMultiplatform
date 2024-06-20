@@ -3,7 +3,7 @@ package com.hivian.kmp_mvvm.basicFeature.domain.usecases
 import androidx.compose.material.SnackbarDuration
 import com.hivian.kmp_mvvm.core.services.IUserInteractionService
 
-class ShowAppMessageUseCase constructor(
+class ShowAppMessageUseCase(
     private val userInteractionService: IUserInteractionService
 ) {
 
