@@ -17,6 +17,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,14 +43,14 @@ fun HomeScreen(
 ) {
     viewModel.initialize()
 
-    LaunchedEffect(Unit) {
-        viewModel.navigationEvent.collectLatest {
-            when (val event = it) {
-                is NavigationAction.ToDetailScreen -> {
-                    onNavigateToDetail(event.userId)
-                }
-                else -> Unit
+    val navigationEventState = viewModel.navigationEvent.collectAsState()
+
+    LaunchedEffect(navigationEventState.value) {
+        when (val event = navigationEventState.value) {
+            is NavigationAction.ToDetailScreen -> {
+                onNavigateToDetail(event.userId)
             }
+            else -> Unit
         }
     }
 

@@ -19,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,7 +34,6 @@ import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.ic_cell_24dp
 import kmp_mvvm.composeapp.generated.resources.ic_email_24dp
 import kmp_mvvm.composeapp.generated.resources.ic_local_phone_24dp
-import kotlinx.coroutines.flow.collectLatest
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -49,12 +49,12 @@ fun DetailScreen(
 ) {
     viewModel.initialize()
 
-    LaunchedEffect(Unit) {
-        viewModel.navigationEvent.collectLatest {
-            when (viewModel.navigationEvent.value) {
-                is NavigationAction.Back -> onNavigateBack()
-                else -> Unit
-            }
+    val navigationEventState = viewModel.navigationEvent.collectAsState()
+
+    LaunchedEffect(navigationEventState.value) {
+        when (navigationEventState.value) {
+            is NavigationAction.Back -> onNavigateBack()
+            else -> Unit
         }
     }
 
