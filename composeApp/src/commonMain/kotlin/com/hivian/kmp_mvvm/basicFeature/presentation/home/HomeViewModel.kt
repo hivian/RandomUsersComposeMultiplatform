@@ -39,8 +39,6 @@ class HomeViewModel(
 
     val retryMessage = mutableStateOf("")
 
-
-
     override fun initialize() {
         if (isInitialized.value) return
 

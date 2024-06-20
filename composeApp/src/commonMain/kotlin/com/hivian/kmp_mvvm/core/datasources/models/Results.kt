@@ -15,7 +15,7 @@ data class Results(
 data class RandomUserDTO(
 
     @PrimaryKey(autoGenerate = true)
-    var localId: Int,
+    var localId: Int = 0,
 
     val gender: String,
 

@@ -33,6 +33,7 @@ import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.ic_cell_24dp
 import kmp_mvvm.composeapp.generated.resources.ic_email_24dp
 import kmp_mvvm.composeapp.generated.resources.ic_local_phone_24dp
+import kotlinx.coroutines.flow.collectLatest
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -48,10 +49,12 @@ fun DetailScreen(
 ) {
     viewModel.initialize()
 
-    LaunchedEffect(viewModel.navigationEvent) {
-        when (viewModel.navigationEvent.value) {
-            is NavigationAction.Back -> onNavigateBack()
-            else -> Unit
+    LaunchedEffect(Unit) {
+        viewModel.navigationEvent.collectLatest {
+            when (viewModel.navigationEvent.value) {
+                is NavigationAction.Back -> onNavigateBack()
+                else -> Unit
+            }
         }
     }
 
@@ -177,7 +180,7 @@ fun UserInfoItem(drawableStart: DrawableResource, text: String) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
             text = text,
-            style = MaterialTheme.typography.h2,
+            style = MaterialTheme.typography.h6,
         )
     }
 }

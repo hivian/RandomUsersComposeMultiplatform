@@ -26,11 +26,15 @@ import org.koin.compose.getKoin
 sealed class Screen(val route: String) {
 
     companion object {
-        const val USER_ID_PARAMETER = "user_id"
+        const val USER_ID_KEY = "user_id"
     }
 
     data object Home : Screen("home")
-    data object Detail : Screen("detail/{$USER_ID_PARAMETER}")
+    data object Detail : Screen("detail/{$USER_ID_KEY}")
+
+    fun loadParameterValue(key: String, userId: Int): String {
+        return route.replace("{$key}", "$userId")
+    }
 }
 
 @Composable
@@ -69,18 +73,18 @@ fun InitNavController(
         composable(route = Screen.Home.route) {
             HomeScreen(
                 onNavigateToDetail = { userId ->
-                    navController.navigate(Screen.Detail.route.replace(Screen.USER_ID_PARAMETER, "$userId"))
+                    navController.navigate(Screen.Detail.loadParameterValue(Screen.USER_ID_KEY, userId))
                 }
             )
         }
         composable(
             route = Screen.Detail.route,
             arguments = listOf(
-                navArgument(Screen.USER_ID_PARAMETER) { type = NavType.IntType }
+                navArgument(Screen.USER_ID_KEY) { type = NavType.IntType }
             )
         ) { backStackEntry ->
             DetailScreen(
-                userId = backStackEntry.arguments!!.getInt(Screen.USER_ID_PARAMETER),
+                userId = backStackEntry.arguments!!.getInt(Screen.USER_ID_KEY),
                 onNavigateBack = { navController.popBackStack() }
             )
         }

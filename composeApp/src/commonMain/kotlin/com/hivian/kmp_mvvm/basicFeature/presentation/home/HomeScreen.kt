@@ -30,6 +30,7 @@ import coil3.request.crossfade
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
 import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
+import kotlinx.coroutines.flow.collectLatest
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.koin.compose.koinInject
@@ -41,12 +42,14 @@ fun HomeScreen(
 ) {
     viewModel.initialize()
 
-    LaunchedEffect(viewModel.navigationEvent) {
-        when (val event = viewModel.navigationEvent.value) {
-            is NavigationAction.ToDetailScreen -> {
-                onNavigateToDetail(event.userId)
+    LaunchedEffect(Unit) {
+        viewModel.navigationEvent.collectLatest {
+            when (val event = it) {
+                is NavigationAction.ToDetailScreen -> {
+                    onNavigateToDetail(event.userId)
+                }
+                else -> Unit
             }
-            else -> Unit
         }
     }
 
@@ -167,7 +170,7 @@ fun UserListItem(user: RandomUser, onItemClick : (Int) -> Unit) {
                     .padding(start = 8.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Text(text = user.fullName, style = MaterialTheme.typography.h3)
+                Text(text = user.fullName, style = MaterialTheme.typography.h5)
                 Text(text = user.email, style = MaterialTheme.typography.body2)
             }
         }

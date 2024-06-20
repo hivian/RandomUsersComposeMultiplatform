@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.serialization)
+    kotlin("plugin.serialization")
 }
 
 kotlin {
