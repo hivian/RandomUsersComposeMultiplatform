@@ -16,6 +16,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,15 +29,26 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
+import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.koin.compose.koinInject
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = koinInject()
+    viewModel: HomeViewModel = koinInject(),
+    onNavigateToDetail: (Int) -> Unit
 ) {
     viewModel.initialize()
+
+    LaunchedEffect(viewModel.navigationEvent) {
+        when (val event = viewModel.navigationEvent.value) {
+            is NavigationAction.ToDetailScreen -> {
+                onNavigateToDetail(event.userId)
+            }
+            else -> Unit
+        }
+    }
 
     HomeContent(
         HomeViewModelArg(
@@ -82,7 +94,9 @@ fun HomeContent(
                     )
                 }
                 is ViewModelVisualState.Error -> InitErrorView(
-                    errorViewArgs = InitErrorViewArg(viewModelArg.errorMessage,viewModelArg.retryMessage),
+                    errorViewArgs = InitErrorViewArg(
+                        viewModelArg.errorMessage.value, viewModelArg.retryMessage.value
+                    ),
                     onRetry = { viewModelArg.refresh() }
                 )
                 else -> Unit

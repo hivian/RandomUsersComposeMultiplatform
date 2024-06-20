@@ -6,13 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.GetRandomUsersUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.LocalizationUseCase
-import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.NavigateToRandomUserDetailUseCase
 import com.hivian.kmp_mvvm.core.base.PaginationViewModel
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.ShowAppMessageUseCase
 import com.hivian.kmp_mvvm.core.datasources.ServiceResult
 import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
 import com.hivian.kmp_mvvm.core.extensions.toErrorMessage
+import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
 import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.home_title
 import kmp_mvvm.composeapp.generated.resources.retry_message
@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val localizationUseCase: LocalizationUseCase,
-    private val navigateToRandomUserDetailUseCase: NavigateToRandomUserDetailUseCase,
     private val getRandomUsersUseCase: GetRandomUsersUseCase,
     private val showAppMessageUseCase: ShowAppMessageUseCase
 ): PaginationViewModel<Int, RandomUser>(initialKey = PAGINATION_INITIAL_KEY, pageSize = RESULT_COUNT) {
@@ -39,6 +38,8 @@ class HomeViewModel(
     val errorMessage = mutableStateOf("")
 
     val retryMessage = mutableStateOf("")
+
+
 
     override fun initialize() {
         if (isInitialized.value) return
@@ -107,7 +108,7 @@ class HomeViewModel(
     }
 
     fun openRandomUserDetail(userId: Int) {
-        navigateToRandomUserDetailUseCase(userId)
+        _navigationEvent.value = NavigationAction.ToDetailScreen(userId)
     }
 
     fun refresh() {

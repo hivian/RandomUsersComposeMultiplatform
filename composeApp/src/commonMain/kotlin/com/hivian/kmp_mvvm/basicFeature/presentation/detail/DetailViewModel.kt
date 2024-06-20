@@ -4,7 +4,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.GetRandomUserByIdUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.TranslateResourceUseCase
-import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.NavigateBackUseCase
 import com.hivian.kmp_mvvm.core.base.ViewModelBase
 import com.hivian.kmp_mvvm.core.datasources.ServiceResult
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.ShowAppMessageUseCase

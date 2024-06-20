@@ -4,7 +4,6 @@ import com.hivian.kmp_mvvm.basicFeature.domain.usecases.GetRandomUsersUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.LocalizationUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.ShowAppMessageUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.TranslateResourceUseCase
-import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.NavigateBackUseCase
 import com.hivian.kmp_mvvm.basicFeature.domain.usecases.navigation.NavigateToRandomUserDetailUseCase
 import org.koin.core.module.Module
 import org.koin.dsl.module
