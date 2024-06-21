@@ -35,15 +35,16 @@ import kotlinx.coroutines.flow.collectLatest
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = koinInject(),
+    viewModel: HomeViewModel = koinViewModel(),
     onNavigateToDetail: (Int) -> Unit
 ) {
     viewModel.initialize()
 
-    val navigationEventState = viewModel.navigationEvent.collectAsState()
+    val navigationEventState = viewModel.navigationEvent.collectAsState(initial = null)
 
     LaunchedEffect(navigationEventState.value) {
         when (val event = navigationEventState.value) {

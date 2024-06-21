@@ -110,7 +110,9 @@ class HomeViewModel(
     }
 
     fun openRandomUserDetail(userId: Int) {
-        _navigationEvent.value = NavigationAction.ToDetailScreen(userId)
+        viewModelScope.launch {
+            _navigationEvent.emit(NavigationAction.ToDetailScreen(userId))
+        }
     }
 
     fun refresh() {

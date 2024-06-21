@@ -67,6 +67,7 @@ kotlin {
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
             // required by koin
             implementation(libs.stately.common)
 

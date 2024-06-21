@@ -38,18 +38,18 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
-import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
 fun DetailScreen(
     userId: Int,
-    viewModel: DetailViewModel = koinInject(parameters = { parametersOf(userId) }),
+    viewModel: DetailViewModel = koinViewModel(parameters = { parametersOf(userId) }),
     onNavigateBack: () -> Unit
 ) {
     viewModel.initialize()
 
-    val navigationEventState = viewModel.navigationEvent.collectAsState()
+    val navigationEventState = viewModel.navigationEvent.collectAsState(initial = null)
 
     LaunchedEffect(navigationEventState.value) {
         when (navigationEventState.value) {
