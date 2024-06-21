@@ -21,6 +21,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImagePainter
@@ -29,6 +30,7 @@ import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
+import com.hivian.kmp_mvvm.basicFeature.presentation.themes.LocalCustomColorPalette
 import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
 import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
 import kotlinx.coroutines.flow.collectLatest
@@ -78,6 +80,8 @@ fun HomeContent(
     Scaffold(
         topBar = {
             TopAppBar(
+                backgroundColor = LocalCustomColorPalette.current.toolbarBackgroundColor,
+                contentColor = LocalCustomColorPalette.current.toolbarContentColor,
                 title = { Text(text = viewModelArg.title.value) },
             )
         }
@@ -169,10 +173,10 @@ fun UserListItem(user: RandomUser, onItemClick : (Int) -> Unit) {
             Column(
                 Modifier
                     .fillMaxSize()
-                    .padding(start = 8.dp),
+                    .padding(start = 12.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Text(text = user.fullName, style = MaterialTheme.typography.h5)
+                Text(text = user.fullName, style = MaterialTheme.typography.h6)
                 Text(text = user.email, style = MaterialTheme.typography.body2)
             }
         }
