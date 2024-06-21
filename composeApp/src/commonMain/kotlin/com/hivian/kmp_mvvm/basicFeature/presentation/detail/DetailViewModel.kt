@@ -11,7 +11,6 @@ import com.hivian.kmp_mvvm.core.extensions.toErrorMessage
 import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
 import kotlinx.coroutines.launch
 
-
 class DetailViewModel(
     private val userId: Int,
     private val translateResourceUseCase: TranslateResourceUseCase,
