@@ -1,7 +1,5 @@
 package com.hivian.kmp_mvvm.core.datasources.models
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -11,10 +9,8 @@ data class Results(
 )
 
 @Serializable
-@Entity(tableName = "random_user_entity")
 data class RandomUserDTO(
 
-    @PrimaryKey(autoGenerate = true)
     var localId: Int = 0,
 
     val gender: String,

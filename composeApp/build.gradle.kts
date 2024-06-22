@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -7,9 +6,11 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.serialization)
+    alias(libs.plugins.sqldelight)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
-    kotlin("plugin.serialization")
+
 }
 
 kotlin {
@@ -37,14 +38,6 @@ kotlin {
     }
     
     sourceSets {
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-
-            implementation(libs.ktor.client.okhttp)
-
-            implementation(libs.koin.android)
-        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -52,9 +45,13 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.kotlinx.serialization)
+
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
-            implementation(libs.kotlinx.serialization)
+            implementation(libs.sqldelight.runtime)
+            implementation(libs.sqldelight.primitive)
+
             implementation(libs.navigation.compose)
             implementation(libs.kotlin.atomicfu)
             implementation(libs.coil.compose)
@@ -73,8 +70,17 @@ kotlin {
 
             implementation(libs.maps.compose)
         }
+        androidMain.dependencies {
+            implementation(compose.preview)
+            implementation(libs.androidx.activity.compose)
+
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.sqldelight.android.driver)
+            implementation(libs.koin.android)
+        }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sqldelight.native.driver)
         }
     }
 
@@ -120,6 +126,14 @@ android {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set("${android.namespace}.core.datasources.database")
+        }
+    }
 }
 
 dependencies {

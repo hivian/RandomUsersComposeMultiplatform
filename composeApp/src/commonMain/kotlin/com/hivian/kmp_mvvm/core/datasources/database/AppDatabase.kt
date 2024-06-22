@@ -1,34 +1,26 @@
 package com.hivian.kmp_mvvm.core.datasources.database
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.hivian.kmp_mvvm.core.datasources.database.converters.LocationConverter
-import com.hivian.kmp_mvvm.core.datasources.database.converters.NameConverter
-import com.hivian.kmp_mvvm.core.datasources.database.converters.PictureConverter
-import com.hivian.kmp_mvvm.core.datasources.database.dao.IRandomUsersDao
-import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
+import app.cash.sqldelight.adapter.primitive.IntColumnAdapter
+import com.hivian.kmp_mvvm.core.datasources.database.converters.LocationAdapter
+import com.hivian.kmp_mvvm.core.datasources.database.converters.NameAdapter
+import com.hivian.kmp_mvvm.core.datasources.database.converters.PictureAdapter
+import com.hivian.kmpmvvm.core.datasources.database.AppDatabaseQueries
+import com.hivian.kmpmvvm.core.datasources.database.RandomUserEntity
 
-@Database(entities = [RandomUserDTO::class], version = AppDatabase.DB_VERSION, exportSchema = false)
-@TypeConverters(NameConverter::class, LocationConverter::class, PictureConverter::class)
-abstract class AppDatabase : RoomDatabase(), DB {
+internal class SQLDelightDatabase(databaseDriverFactory: DatabaseDriverFactory) {
 
-    abstract fun randomUsersDao() : IRandomUsersDao
+    private val database = AppDatabase(
+        driver = databaseDriverFactory.createDriver(),
+        randomUserEntityAdapter = RandomUserEntity.Adapter(
+            localIdAdapter = IntColumnAdapter,
+            nameAdapter = NameAdapter,
+            locationAdapter = LocationAdapter,
+            pictureAdapter = PictureAdapter
+        )
+    )
 
-    companion object {
-        const val DB_NAME = "app_database"
-
-        const val DB_VERSION = 1
+    operator fun <T> invoke(block: (AppDatabaseQueries) -> T): T {
+        return block(database.appDatabaseQueries)
     }
 
-    override fun clearAllTables() {
-        super.clearAllTables()
-    }
-
-}
-
-// FIXME: Added a hack to resolve below issue:
-// Class 'AppDatabase_Impl' is not abstract and does not implement abstract base class member 'clearAllTables'.
-interface DB {
-    fun clearAllTables() {}
 }

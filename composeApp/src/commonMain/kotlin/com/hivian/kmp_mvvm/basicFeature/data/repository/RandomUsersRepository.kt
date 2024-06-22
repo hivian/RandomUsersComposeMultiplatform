@@ -12,20 +12,20 @@ import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
 import com.hivian.kmp_mvvm.core.datasources.remote.HttpResult
 
 internal class RandomUsersRepository(
-    private val randomUsersDatabaseService: IDatabaseService,
-    private val randomUsersHttpService: IApiService
+    private val databaseService: IDatabaseService,
+    private val httpService: IApiService
 ): IRandomUsersRepository {
 
     override suspend fun getUserById(userId: Int, imageSize: ImageSize): ServiceResult<RandomUser> {
         return runCatching {
-            ServiceResult.Success(randomUsersDatabaseService.getUserById(userId).mapToRandomUser(imageSize))
+            ServiceResult.Success(databaseService.getUserById(userId).mapToRandomUser(imageSize))
         }.getOrDefault(
             ServiceResult.Error(ErrorType.DATABASE_ERROR)
         )
     }
 
     override suspend fun fetchRandomUsers(pageIndex: Int, pageSize: Int): ServiceResult<List<RandomUser>> {
-        val httpUsersResult = randomUsersHttpService.fetchRandomUsers(pageIndex, pageSize)
+        val httpUsersResult = httpService.fetchRandomUsers(pageIndex, pageSize)
         val databaseUserResult = fetchDatabaseUsers(pageIndex, pageSize)
 
         return when (httpUsersResult) {
@@ -35,7 +35,7 @@ internal class RandomUsersRepository(
                 if (users.isEmpty()) {
                     ServiceResult.Error(ErrorType.NO_RESULT, databaseUserResult)
                 } else {
-                    randomUsersDatabaseService.upsertUsers(users)
+                    databaseService.upsertUsers(users)
                     ServiceResult.Success(fetchDatabaseUsers(pageIndex, pageSize))
                 }
             }
@@ -46,8 +46,8 @@ internal class RandomUsersRepository(
     }
 
     private suspend fun fetchDatabaseUsers(pageIndex: Int, pageSize: Int): List<RandomUser> {
-        return randomUsersDatabaseService
-            .fetchUsers(pageIndex, pageSize)
+        return databaseService
+            .getAllUsers(pageIndex, pageSize)
             .mapToRandomUsers(ImageSize.MEDIUM)
     }
 

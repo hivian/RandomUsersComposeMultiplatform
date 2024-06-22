@@ -38,14 +38,14 @@ interface IRandomUsersDao {
     suspend fun getRandomUserByServerId(name: Name): RandomUserDTO?
 
     @Transaction
-    suspend fun upsert(randomUserDTO: RandomUserDTO) {
-        val isRandomUser = getRandomUserByServerId(randomUserDTO.name)
+    suspend fun upsert(randomUser: RandomUserDTO) {
+        val isRandomUser = getRandomUserByServerId(randomUser.name)
         isRandomUser?.let {
-            update(randomUserDTO.apply {
+            update(randomUser.apply {
                 localId = isRandomUser.localId
             })
         } ?: run {
-            insert(randomUserDTO)
+            insert(randomUser)
         }
     }
 

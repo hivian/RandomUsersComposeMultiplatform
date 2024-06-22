@@ -1,0 +1,35 @@
+import com.hivian.kmp_mvvm.core.datasources.models.Name;
+import com.hivian.kmp_mvvm.core.datasources.models.Location;
+import com.hivian.kmp_mvvm.core.datasources.models.Picture;
+import kotlin.Int;
+
+CREATE TABLE randomUserEntity  (
+    localId INTEGER AS Int PRIMARY KEY AUTOINCREMENT NOT NULL,
+    gender TEXT NOT NULL,
+    name TEXT AS Name NOT NULL,
+    location TEXT AS Location NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    cell TEXT NOT NULL,
+    picture TEXT AS Picture NOT NULL
+);
+
+getAllRandomUsers:
+SELECT *
+FROM randomUserEntity
+LIMIT ?
+OFFSET ?;
+
+deleteAll:
+DELETE FROM randomUserEntity;
+
+getRandomUserById:
+SELECT *
+FROM randomUserEntity
+WHERE localId = ?;
+
+getRandomUserByServerId:
+SELECT *
+FROM randomUserEntity
+WHERE name = ?
+LIMIT 1;

@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import platform.Foundation.NSHomeDirectory
 
-fun getAppDatabase(): AppDatabase {
+/*fun getAppDatabase(): AppDatabase {
     val dbFile = NSHomeDirectory() + "/${AppDatabase.DB_NAME}"
 
     return Room.databaseBuilder<AppDatabase>(
@@ -13,4 +13,4 @@ fun getAppDatabase(): AppDatabase {
     )
         .setDriver(BundledSQLiteDriver())
         .build()
-}
+}*/

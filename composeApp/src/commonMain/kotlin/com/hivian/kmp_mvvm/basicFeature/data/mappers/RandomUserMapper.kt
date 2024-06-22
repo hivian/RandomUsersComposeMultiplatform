@@ -2,7 +2,6 @@ package com.hivian.kmp_mvvm.basicFeature.data.mappers
 
 import com.hivian.kmp_mvvm.basicFeature.domain.models.Address
 import com.hivian.kmp_mvvm.basicFeature.domain.models.RandomUser
-import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
 
 enum class ImageSize {
     THUMBNAIL,
@@ -10,7 +9,7 @@ enum class ImageSize {
     LARGE
 }
 
-fun RandomUserDTO.mapToRandomUser(imageSize: ImageSize) : RandomUser {
+fun com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO.mapToRandomUser(imageSize: ImageSize) : RandomUser {
     return RandomUser(
         id = localId,
         gender = gender,
@@ -34,6 +33,6 @@ fun RandomUserDTO.mapToRandomUser(imageSize: ImageSize) : RandomUser {
     )
 }
 
-fun List<RandomUserDTO>.mapToRandomUsers(imageSize: ImageSize): List<RandomUser> {
+fun List<com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO>.mapToRandomUsers(imageSize: ImageSize): List<RandomUser> {
     return map { it.mapToRandomUser(imageSize) }
 }
