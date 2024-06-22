@@ -1,5 +1,6 @@
 package com.hivian.kmp_mvvm.di
 
+import com.hivian.kmp_mvvm.di.modules.dispatcherModule
 import com.hivian.kmp_mvvm.di.modules.servicesModule
 import com.hivian.kmp_mvvm.di.modules.platformDatabaseModule
 import com.hivian.kmp_mvvm.di.modules.repositoryModule
@@ -12,6 +13,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
         appDeclaration()
         modules(
+            dispatcherModule,
             platformDatabaseModule,
             servicesModule,
             repositoryModule,
