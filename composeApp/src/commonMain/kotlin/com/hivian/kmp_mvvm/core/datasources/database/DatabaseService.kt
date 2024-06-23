@@ -11,11 +11,9 @@ import com.hivian.kmp_mvvm.core.datasources.database.converters.NameAdapter
 import com.hivian.kmp_mvvm.core.datasources.database.converters.PictureAdapter
 import com.hivian.kmp_mvvm.core.datasources.models.Name
 import com.hivian.kmpmvvm.core.datasources.database.RandomUserEntity
-import kotlinx.coroutines.CoroutineDispatcher
 
 internal class DatabaseService(
     databaseDriverFactory: DatabaseDriverFactory,
-    private val dispatcher: CoroutineDispatcher
 ): IDatabaseService {
 
     private val database = AppDatabase(
@@ -59,12 +57,9 @@ internal class DatabaseService(
 
     private fun upsertUser(randomUser: RandomUserDTO) {
         queries.apply {
-            val isRandomUser = getRandomUserByName(randomUser.name).executeAsOneOrNull()
-            isRandomUser?.let {
-                upsert(randomUser.apply { localId = isRandomUser.localId }.mapToRandomUserEntity())
-            } ?: run {
-                insert(randomUser.mapToRandomUserEntity())
-            }
+            getRandomUserByName(randomUser.name).executeAsOneOrNull()?.let { user ->
+                upsert(randomUser.apply { localId = user.localId }.mapToRandomUserEntity())
+            } ?: insert(randomUser.mapToRandomUserEntity())
         }
     }
 

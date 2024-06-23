@@ -17,7 +17,7 @@ import org.koin.dsl.module
 val servicesModule = module {
     single<IHttpClient> { HttpClient(NetworkConstants.BASE_URL) }
     single<IApiService> { ApiService(get()) }
-    single<IDatabaseService> { DatabaseService(get(), get(named(Dispatcher.IO))) }
+    single<IDatabaseService> { DatabaseService(get()) }
     single<ILocalizationService> { LocalizationService() }
     single<IUserInteractionService> { UserInteractionService() }
 }
