@@ -14,11 +14,24 @@ CREATE TABLE randomUserEntity  (
     picture TEXT AS Picture NOT NULL
 );
 
+insert:
+  INSERT INTO randomUserEntity(gender, name, location, email, phone, cell, picture)
+  VALUES :randomUserEntity;
+
+update:
+  UPDATE randomUserEntity
+  SET gender = :gender, name = :name, location = :location, email = :email, phone = :phone, cell = :cell, picture = :picture
+  WHERE localId = :localId;
+
+upsert:
+  INSERT OR REPLACE INTO randomUserEntity(localId, gender, name, location, email, phone, cell, picture)
+  VALUES :randomUserEntity;
+
 getAllRandomUsers:
 SELECT *
 FROM randomUserEntity
-LIMIT ?
-OFFSET ?;
+LIMIT :limit
+OFFSET :offset;
 
 deleteAll:
 DELETE FROM randomUserEntity;
@@ -26,10 +39,10 @@ DELETE FROM randomUserEntity;
 getRandomUserById:
 SELECT *
 FROM randomUserEntity
-WHERE localId = ?;
+WHERE localId = :id;
 
-getRandomUserByServerId:
+getRandomUserByName:
 SELECT *
 FROM randomUserEntity
-WHERE name = ?
+WHERE name = :name
 LIMIT 1;

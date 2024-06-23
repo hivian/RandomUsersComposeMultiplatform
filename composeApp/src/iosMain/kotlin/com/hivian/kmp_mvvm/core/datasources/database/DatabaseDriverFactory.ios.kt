@@ -1,7 +1,7 @@
+package com.hivian.kmp_mvvm.core.datasources.database
+
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
-import com.hivian.kmp_mvvm.core.datasources.database.AppDatabase
-import com.hivian.kmp_mvvm.core.datasources.database.DB_NAME
 
 actual class DatabaseDriverFactory {
 
