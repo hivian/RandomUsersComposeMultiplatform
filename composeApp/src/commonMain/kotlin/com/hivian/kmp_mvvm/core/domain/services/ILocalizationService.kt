@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.core.services
+package com.hivian.kmp_mvvm.core.domain.services
 
 import org.jetbrains.compose.resources.StringResource
 

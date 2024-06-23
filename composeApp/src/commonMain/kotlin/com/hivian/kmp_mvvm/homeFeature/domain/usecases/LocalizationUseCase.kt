@@ -1,6 +1,6 @@
 package com.hivian.kmp_mvvm.homeFeature.domain.usecases
 
-import com.hivian.kmp_mvvm.core.services.ILocalizationService
+import com.hivian.kmp_mvvm.core.domain.services.ILocalizationService
 import org.jetbrains.compose.resources.StringResource
 
 class LocalizationUseCase(

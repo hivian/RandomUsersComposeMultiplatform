@@ -30,8 +30,8 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hivian.kmp_mvvm.homeFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.homeFeature.presentation.themes.LocalCustomColorPalette
-import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
-import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
+import com.hivian.kmp_mvvm.core.domain.base.ViewModelVisualState
+import com.hivian.kmp_mvvm.core.presentation.navigation.NavigationAction
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.koin.compose.viewmodel.koinViewModel

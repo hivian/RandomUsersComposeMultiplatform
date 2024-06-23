@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.core.services
+package com.hivian.kmp_mvvm.core.domain.services
 
 import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.SnackbarHostState

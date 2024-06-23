@@ -1,7 +1,8 @@
-package com.hivian.kmp_mvvm.core.services
+package com.hivian.kmp_mvvm.core.presentation.services
 
 import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.SnackbarHostState
+import com.hivian.kmp_mvvm.core.domain.services.IUserInteractionService
 
 internal class UserInteractionService: IUserInteractionService {
 

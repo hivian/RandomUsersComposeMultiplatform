@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.core.extensions
+package com.hivian.kmp_mvvm.core.domain.extensions
 
 import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
 import kmp_mvvm.composeapp.generated.resources.Res

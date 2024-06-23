@@ -1,5 +1,6 @@
-package com.hivian.kmp_mvvm.core.services
+package com.hivian.kmp_mvvm.core.presentation.services
 
+import com.hivian.kmp_mvvm.core.domain.services.ILocalizationService
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 

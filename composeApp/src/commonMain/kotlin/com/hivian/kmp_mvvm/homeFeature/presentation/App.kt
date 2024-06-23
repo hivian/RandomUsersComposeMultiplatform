@@ -16,7 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.hivian.kmp_mvvm.homeFeature.presentation.detail.DetailScreen
-import com.hivian.kmp_mvvm.core.services.IUserInteractionService
+import com.hivian.kmp_mvvm.core.domain.services.IUserInteractionService
 import com.hivian.kmp_mvvm.homeFeature.presentation.home.HomeScreen
 import com.hivian.kmp_mvvm.homeFeature.presentation.themes.MainTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview

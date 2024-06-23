@@ -4,7 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.hivian.kmp_mvvm.homeFeature.domain.models.RandomUser
-import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
+import com.hivian.kmp_mvvm.core.domain.base.ViewModelVisualState
 
 data class InitErrorViewArg(
     val errorMessage: String,

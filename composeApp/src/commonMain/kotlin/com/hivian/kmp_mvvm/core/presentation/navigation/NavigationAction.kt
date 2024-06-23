@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.core.services.navigation
+package com.hivian.kmp_mvvm.core.presentation.navigation
 
 sealed class NavigationAction {
     data object ToHomeScreen : NavigationAction()

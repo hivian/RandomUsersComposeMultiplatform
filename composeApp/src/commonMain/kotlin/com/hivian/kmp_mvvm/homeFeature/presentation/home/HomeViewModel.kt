@@ -6,13 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.hivian.kmp_mvvm.homeFeature.domain.models.RandomUser
 import com.hivian.kmp_mvvm.homeFeature.domain.usecases.GetRandomUsersUseCase
 import com.hivian.kmp_mvvm.homeFeature.domain.usecases.LocalizationUseCase
-import com.hivian.kmp_mvvm.core.base.PaginationViewModel
-import com.hivian.kmp_mvvm.core.base.ViewModelVisualState
+import com.hivian.kmp_mvvm.core.domain.base.PaginationViewModel
+import com.hivian.kmp_mvvm.core.domain.base.ViewModelVisualState
 import com.hivian.kmp_mvvm.homeFeature.domain.usecases.ShowAppMessageUseCase
 import com.hivian.kmp_mvvm.core.datasources.ServiceResult
 import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
-import com.hivian.kmp_mvvm.core.extensions.toErrorMessage
-import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
+import com.hivian.kmp_mvvm.core.domain.extensions.toErrorMessage
+import com.hivian.kmp_mvvm.core.presentation.navigation.NavigationAction
 import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.home_title
 import kmp_mvvm.composeapp.generated.resources.retry_message

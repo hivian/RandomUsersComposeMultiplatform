@@ -31,7 +31,7 @@ import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hivian.kmp_mvvm.homeFeature.presentation.themes.LocalCustomColorPalette
-import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
+import com.hivian.kmp_mvvm.core.presentation.navigation.NavigationAction
 import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.ic_cell_24dp
 import kmp_mvvm.composeapp.generated.resources.ic_email_24dp

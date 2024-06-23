@@ -1,8 +1,8 @@
-package com.hivian.kmp_mvvm.core.base
+package com.hivian.kmp_mvvm.core.domain.base
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.hivian.kmp_mvvm.core.services.navigation.NavigationAction
+import com.hivian.kmp_mvvm.core.presentation.navigation.NavigationAction
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow

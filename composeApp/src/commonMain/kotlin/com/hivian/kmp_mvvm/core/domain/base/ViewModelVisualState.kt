@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.core.base
+package com.hivian.kmp_mvvm.core.domain.base
 
 import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
 
