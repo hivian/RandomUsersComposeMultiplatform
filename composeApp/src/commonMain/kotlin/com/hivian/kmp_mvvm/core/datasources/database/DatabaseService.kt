@@ -37,7 +37,10 @@ internal class DatabaseService(
     }
 
     override fun getAllUsers(pageIndex: Int, pageSize: Int): List<RandomUserDTO> {
-        return queries.getAllRandomUsers(((pageIndex - 1) * pageSize).toLong(), pageSize.toLong())
+        return queries.getAllRandomUsers(
+            index = ((pageIndex - 1) * pageSize).toLong(),
+            limit = pageSize.toLong()
+        )
             .executeAsList()
             .mapToRandomUsersDTO()
     }

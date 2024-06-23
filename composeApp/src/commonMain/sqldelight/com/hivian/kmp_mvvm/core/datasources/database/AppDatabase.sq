@@ -31,7 +31,7 @@ getAllRandomUsers:
 SELECT *
 FROM randomUserEntity
 LIMIT :limit
-OFFSET :offset;
+OFFSET :index;
 
 deleteAll:
 DELETE FROM randomUserEntity;
