@@ -22,7 +22,7 @@
 A simple Android & iOS demo app built with Kotlin and <a href="https://www.jetbrains.com/lp/compose-multiplatform">Compose Multiplatform</a> for sharing UIs. <br/>
 Data fetched from https://randomuser.me api and saved to SQLDelight database.
  
-This project is the Kotlin Multiplatform copy of this <a href="https://github.com/hivian/RandomUsersComposeAndroid">Android project</a>
+This project is the Kotlin Multiplatform copy of that <a href="https://github.com/hivian/RandomUsersComposeAndroid">Android project</a>
 
 ## Preview
 <p>
