@@ -1,4 +1,4 @@
-package com.hivian.randomusers.homefeature.domain.usecases
+package com.hivian.randomusers.core.domain.usescases
 
 import com.hivian.randomusers.core.domain.services.ILocalizationService
 import org.jetbrains.compose.resources.StringResource

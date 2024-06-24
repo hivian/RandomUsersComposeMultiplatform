@@ -1,9 +1,9 @@
 package com.hivian.randomusers.homefeature.data.mappers
 
+import com.hivian.randomusers.core.datasources.database.RandomUserEntity
 import com.hivian.randomusers.core.datasources.models.RandomUserDTO
 import com.hivian.randomusers.homefeature.domain.models.Address
 import com.hivian.randomusers.homefeature.domain.models.RandomUser
-import com.hivian.randomusers.core.datasources.database.RandomUserEntity
 
 enum class ImageSize {
     THUMBNAIL,

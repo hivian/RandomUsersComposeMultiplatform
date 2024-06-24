@@ -12,7 +12,7 @@ import com.hivian.randomusers.homefeature.data.mappers.mapToRandomUserEntity
 import com.hivian.randomusers.homefeature.data.mappers.mapToRandomUsersDTO
 
 internal class DatabaseService(
-    databaseDriverFactory: com.hivian.randomusers.core.datasources.database.DatabaseDriverFactory,
+    databaseDriverFactory: DatabaseDriverFactory,
 ): IDatabaseService {
 
     private val database = AppDatabase(

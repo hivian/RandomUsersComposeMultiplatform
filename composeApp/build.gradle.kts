@@ -10,7 +10,6 @@ plugins {
     alias(libs.plugins.sqldelight)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
-
 }
 
 kotlin {
@@ -88,7 +87,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.hivian.${rootProject.name.lowercase()}"
+    namespace = "com.hivian.randomusers"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -96,11 +95,11 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "com.hivian.${rootProject.name.lowercase()}"
+        applicationId = "com.hivian.randomusers"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 100
+        versionName = "1.0.0"
     }
     packaging {
         resources {

@@ -1,4 +1,4 @@
-package com.hivian.randomusers.homefeature.data.repository
+package com.hivian.randomusers.homefeature.data.services
 
 import com.hivian.randomusers.core.datasources.ServiceResult
 import com.hivian.randomusers.core.datasources.remote.ErrorType
@@ -9,12 +9,12 @@ import com.hivian.randomusers.homefeature.data.mappers.ImageSize
 import com.hivian.randomusers.homefeature.data.mappers.mapToRandomUser
 import com.hivian.randomusers.homefeature.data.mappers.mapToRandomUsers
 import com.hivian.randomusers.homefeature.domain.models.RandomUser
-import com.hivian.randomusers.homefeature.domain.repository.IRandomUsersRepository
+import com.hivian.randomusers.homefeature.domain.services.IRandomUsersService
 
-internal class RandomUsersRepository(
+internal class RandomUsersService(
     private val databaseService: IDatabaseService,
     private val httpService: IApiService
-): IRandomUsersRepository {
+): IRandomUsersService {
 
     override suspend fun fetchRandomUsers(pageIndex: Int, pageSize: Int): ServiceResult<List<RandomUser>> {
         val httpUsersResult = httpService.fetchRandomUsers(pageIndex, pageSize)

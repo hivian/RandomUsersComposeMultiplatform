@@ -8,15 +8,15 @@ import com.hivian.randomusers.core.datasources.remote.ErrorType
 import com.hivian.randomusers.core.domain.base.PaginationViewModel
 import com.hivian.randomusers.core.domain.base.ViewModelVisualState
 import com.hivian.randomusers.core.domain.extensions.toErrorMessage
+import com.hivian.randomusers.core.domain.usescases.LocalizationUseCase
+import com.hivian.randomusers.core.domain.usescases.ShowAppMessageUseCase
 import com.hivian.randomusers.core.presentation.navigation.NavigationAction
 import com.hivian.randomusers.homefeature.domain.models.RandomUser
 import com.hivian.randomusers.homefeature.domain.usecases.GetRandomUsersUseCase
-import com.hivian.randomusers.homefeature.domain.usecases.LocalizationUseCase
-import com.hivian.randomusers.homefeature.domain.usecases.ShowAppMessageUseCase
-import randomusers.composeapp.generated.resources.Res
-import randomusers.composeapp.generated.resources.home_title
-import randomusers.composeapp.generated.resources.retry_message
 import kotlinx.coroutines.launch
+import randomuserscomposemultiplatform.composeapp.generated.resources.Res
+import randomuserscomposemultiplatform.composeapp.generated.resources.home_title
+import randomuserscomposemultiplatform.composeapp.generated.resources.retry_message
 
 class HomeViewModel(
     private val localizationUseCase: LocalizationUseCase,

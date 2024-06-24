@@ -2,17 +2,17 @@ package com.hivian.randomusers.core.domain.extensions
 
 
 import com.hivian.randomusers.core.datasources.remote.ErrorType
-import randomusers.composeapp.generated.resources.Res
-import randomusers.composeapp.generated.resources.error_access_denied
-import randomusers.composeapp.generated.resources.error_cancelled
-import randomusers.composeapp.generated.resources.error_database
-import randomusers.composeapp.generated.resources.error_internal
-import randomusers.composeapp.generated.resources.error_no_connection
-import randomusers.composeapp.generated.resources.error_not_found
-import randomusers.composeapp.generated.resources.error_redirect
-import randomusers.composeapp.generated.resources.error_timeout
-import randomusers.composeapp.generated.resources.error_unknown
 import org.jetbrains.compose.resources.StringResource
+import randomuserscomposemultiplatform.composeapp.generated.resources.Res
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_access_denied
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_cancelled
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_database
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_internal
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_no_connection
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_not_found
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_redirect
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_timeout
+import randomuserscomposemultiplatform.composeapp.generated.resources.error_unknown
 
 fun ErrorType.toErrorMessage(): StringResource {
     return when(this) {

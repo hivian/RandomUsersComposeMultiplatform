@@ -2,10 +2,10 @@ package com.hivian.randomusers.homefeature.domain.usecases
 
 import com.hivian.randomusers.core.datasources.ServiceResult
 import com.hivian.randomusers.homefeature.domain.models.RandomUser
-import com.hivian.randomusers.homefeature.domain.repository.IRandomUsersRepository
+import com.hivian.randomusers.homefeature.domain.services.IRandomUsersService
 
 class GetRandomUsersUseCase(
-    private val randomUsersService: IRandomUsersRepository
+    private val randomUsersService: IRandomUsersService
 ) {
 
     suspend operator fun invoke(pageIndex: Int, pageSize: Int): ServiceResult<List<RandomUser>> {

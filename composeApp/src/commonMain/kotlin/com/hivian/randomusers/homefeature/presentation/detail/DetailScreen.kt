@@ -39,16 +39,16 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hivian.randomusers.core.presentation.navigation.NavigationAction
 import com.hivian.randomusers.homefeature.presentation.themes.LocalCustomColorPalette
-import randomusers.composeapp.generated.resources.Res
-import randomusers.composeapp.generated.resources.ic_cell_24dp
-import randomusers.composeapp.generated.resources.ic_email_24dp
-import randomusers.composeapp.generated.resources.ic_local_phone_24dp
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
+import randomuserscomposemultiplatform.composeapp.generated.resources.Res
+import randomuserscomposemultiplatform.composeapp.generated.resources.ic_cell_24dp
+import randomuserscomposemultiplatform.composeapp.generated.resources.ic_email_24dp
+import randomuserscomposemultiplatform.composeapp.generated.resources.ic_local_phone_24dp
 
 @Composable
 fun DetailScreen(

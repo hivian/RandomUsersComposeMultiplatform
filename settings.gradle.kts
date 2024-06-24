@@ -1,4 +1,4 @@
-rootProject.name = "RandomUsers"
+rootProject.name = "RandomUsersComposeMultiplatform"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

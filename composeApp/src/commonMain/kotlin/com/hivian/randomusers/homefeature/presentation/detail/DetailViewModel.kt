@@ -5,10 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.hivian.randomusers.core.datasources.ServiceResult
 import com.hivian.randomusers.core.domain.base.ViewModelBase
 import com.hivian.randomusers.core.domain.extensions.toErrorMessage
+import com.hivian.randomusers.core.domain.usescases.ShowAppMessageUseCase
+import com.hivian.randomusers.core.domain.usescases.TranslateResourceUseCase
 import com.hivian.randomusers.core.presentation.navigation.NavigationAction
 import com.hivian.randomusers.homefeature.domain.usecases.GetRandomUserByIdUseCase
-import com.hivian.randomusers.homefeature.domain.usecases.ShowAppMessageUseCase
-import com.hivian.randomusers.homefeature.domain.usecases.TranslateResourceUseCase
 import kotlinx.coroutines.launch
 
 class DetailViewModel(

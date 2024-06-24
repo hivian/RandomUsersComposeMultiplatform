@@ -1,4 +1,4 @@
-package com.hivian.randomusers.homefeature.domain.usecases
+package com.hivian.randomusers.core.domain.usescases
 
 import androidx.compose.material.SnackbarDuration
 import com.hivian.randomusers.core.domain.services.IUserInteractionService
