@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.di.modules
+package com.hivian.kmp_mvvm.homeFeature.di
 
 import com.hivian.kmp_mvvm.homeFeature.data.repository.RandomUsersRepository
 import com.hivian.kmp_mvvm.homeFeature.domain.repository.IRandomUsersRepository

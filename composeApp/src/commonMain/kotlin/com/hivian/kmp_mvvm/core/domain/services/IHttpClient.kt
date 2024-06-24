@@ -1,5 +1,6 @@
-package com.hivian.kmp_mvvm.core.datasources.remote
+package com.hivian.kmp_mvvm.core.domain.services
 
+import com.hivian.kmp_mvvm.core.datasources.remote.HttpResult
 import kotlin.reflect.KClass
 
 

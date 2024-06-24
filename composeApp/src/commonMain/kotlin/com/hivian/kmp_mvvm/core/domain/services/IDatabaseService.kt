@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.homeFeature.domain.services
+package com.hivian.kmp_mvvm.core.domain.services
 
 import com.hivian.kmp_mvvm.core.datasources.models.Name
 import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO

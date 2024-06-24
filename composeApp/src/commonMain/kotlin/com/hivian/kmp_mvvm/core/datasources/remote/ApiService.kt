@@ -1,7 +1,9 @@
 package com.hivian.kmp_mvvm.core.datasources.remote
 
-import com.hivian.kmp_mvvm.homeFeature.domain.services.IApiService
+import com.hivian.kmp_mvvm.core.domain.services.IApiService
 import com.hivian.kmp_mvvm.core.datasources.models.Results
+import com.hivian.kmp_mvvm.core.domain.services.IHttpClient
+import com.hivian.kmp_mvvm.core.domain.services.get
 
 internal class ApiService(
     private val httpClient: IHttpClient

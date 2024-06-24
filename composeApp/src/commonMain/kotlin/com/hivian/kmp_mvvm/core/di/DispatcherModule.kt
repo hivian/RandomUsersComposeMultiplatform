@@ -1,4 +1,4 @@
-package com.hivian.kmp_mvvm.di.modules
+package com.hivian.kmp_mvvm.core.di
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO

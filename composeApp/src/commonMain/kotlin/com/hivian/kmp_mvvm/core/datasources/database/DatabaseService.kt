@@ -4,7 +4,7 @@ import app.cash.sqldelight.adapter.primitive.IntColumnAdapter
 import com.hivian.kmp_mvvm.homeFeature.data.mappers.mapToRandomUserDTO
 import com.hivian.kmp_mvvm.homeFeature.data.mappers.mapToRandomUserEntity
 import com.hivian.kmp_mvvm.homeFeature.data.mappers.mapToRandomUsersDTO
-import com.hivian.kmp_mvvm.homeFeature.domain.services.IDatabaseService
+import com.hivian.kmp_mvvm.core.domain.services.IDatabaseService
 import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
 import com.hivian.kmp_mvvm.core.datasources.database.converters.LocationAdapter
 import com.hivian.kmp_mvvm.core.datasources.database.converters.NameAdapter
