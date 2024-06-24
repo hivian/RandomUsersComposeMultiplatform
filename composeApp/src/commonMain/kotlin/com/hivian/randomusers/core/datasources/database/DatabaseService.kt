@@ -7,9 +7,9 @@ import com.hivian.randomusers.core.datasources.database.converters.PictureAdapte
 import com.hivian.randomusers.core.datasources.models.Name
 import com.hivian.randomusers.core.datasources.models.RandomUserDTO
 import com.hivian.randomusers.core.domain.services.IDatabaseService
-import com.hivian.randomusers.homeFeature.data.mappers.mapToRandomUserDTO
-import com.hivian.randomusers.homeFeature.data.mappers.mapToRandomUserEntity
-import com.hivian.randomusers.homeFeature.data.mappers.mapToRandomUsersDTO
+import com.hivian.randomusers.homefeature.data.mappers.mapToRandomUserDTO
+import com.hivian.randomusers.homefeature.data.mappers.mapToRandomUserEntity
+import com.hivian.randomusers.homefeature.data.mappers.mapToRandomUsersDTO
 
 internal class DatabaseService(
     databaseDriverFactory: com.hivian.randomusers.core.datasources.database.DatabaseDriverFactory,
