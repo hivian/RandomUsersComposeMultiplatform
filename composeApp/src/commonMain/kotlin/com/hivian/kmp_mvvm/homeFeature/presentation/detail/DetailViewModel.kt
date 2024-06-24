@@ -2,13 +2,13 @@ package com.hivian.kmp_mvvm.homeFeature.presentation.detail
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
-import com.hivian.kmp_mvvm.homeFeature.domain.usecases.GetRandomUserByIdUseCase
-import com.hivian.kmp_mvvm.homeFeature.domain.usecases.TranslateResourceUseCase
-import com.hivian.kmp_mvvm.core.domain.base.ViewModelBase
 import com.hivian.kmp_mvvm.core.datasources.ServiceResult
-import com.hivian.kmp_mvvm.homeFeature.domain.usecases.ShowAppMessageUseCase
+import com.hivian.kmp_mvvm.core.domain.base.ViewModelBase
 import com.hivian.kmp_mvvm.core.domain.extensions.toErrorMessage
 import com.hivian.kmp_mvvm.core.presentation.navigation.NavigationAction
+import com.hivian.kmp_mvvm.homeFeature.domain.usecases.GetRandomUserByIdUseCase
+import com.hivian.kmp_mvvm.homeFeature.domain.usecases.ShowAppMessageUseCase
+import com.hivian.kmp_mvvm.homeFeature.domain.usecases.TranslateResourceUseCase
 import kotlinx.coroutines.launch
 
 class DetailViewModel(

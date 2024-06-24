@@ -2,7 +2,14 @@ package com.hivian.kmp_mvvm.homeFeature.presentation.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,8 +37,8 @@ import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.hivian.kmp_mvvm.homeFeature.presentation.themes.LocalCustomColorPalette
 import com.hivian.kmp_mvvm.core.presentation.navigation.NavigationAction
+import com.hivian.kmp_mvvm.homeFeature.presentation.themes.LocalCustomColorPalette
 import kmp_mvvm.composeapp.generated.resources.Res
 import kmp_mvvm.composeapp.generated.resources.ic_cell_24dp
 import kmp_mvvm.composeapp.generated.resources.ic_email_24dp

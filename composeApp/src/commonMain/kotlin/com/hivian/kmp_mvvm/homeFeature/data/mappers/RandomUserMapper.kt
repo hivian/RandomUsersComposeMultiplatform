@@ -1,8 +1,8 @@
 package com.hivian.kmp_mvvm.homeFeature.data.mappers
 
+import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
 import com.hivian.kmp_mvvm.homeFeature.domain.models.Address
 import com.hivian.kmp_mvvm.homeFeature.domain.models.RandomUser
-import com.hivian.kmp_mvvm.core.datasources.models.RandomUserDTO
 import com.hivian.kmpmvvm.core.datasources.database.RandomUserEntity
 
 enum class ImageSize {

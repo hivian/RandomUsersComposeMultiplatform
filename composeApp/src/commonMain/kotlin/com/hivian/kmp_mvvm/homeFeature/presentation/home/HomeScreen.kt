@@ -2,7 +2,16 @@ package com.hivian.kmp_mvvm.homeFeature.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -28,10 +37,10 @@ import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.hivian.kmp_mvvm.homeFeature.domain.models.RandomUser
-import com.hivian.kmp_mvvm.homeFeature.presentation.themes.LocalCustomColorPalette
 import com.hivian.kmp_mvvm.core.domain.base.ViewModelVisualState
 import com.hivian.kmp_mvvm.core.presentation.navigation.NavigationAction
+import com.hivian.kmp_mvvm.homeFeature.domain.models.RandomUser
+import com.hivian.kmp_mvvm.homeFeature.presentation.themes.LocalCustomColorPalette
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.koin.compose.viewmodel.koinViewModel

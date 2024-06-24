@@ -3,10 +3,10 @@ package com.hivian.kmp_mvvm.homeFeature.presentation.home
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
+import com.hivian.kmp_mvvm.core.domain.base.ViewModelVisualState
 import com.hivian.kmp_mvvm.homeFeature.domain.models.Address
 import com.hivian.kmp_mvvm.homeFeature.domain.models.RandomUser
-import com.hivian.kmp_mvvm.core.domain.base.ViewModelVisualState
-import com.hivian.kmp_mvvm.core.datasources.remote.ErrorType
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
 
 class HomeViewModelArgProvider: PreviewParameterProvider<HomeViewModelArg> {
