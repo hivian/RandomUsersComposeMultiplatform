@@ -1,0 +1,48 @@
+import com.hivian.randomusers.core.datasources.models.Name;
+import com.hivian.randomusers.core.datasources.models.Location;
+import com.hivian.randomusers.core.datasources.models.Picture;
+import kotlin.Int;
+
+CREATE TABLE randomUserEntity  (
+    localId INTEGER AS Int PRIMARY KEY AUTOINCREMENT NOT NULL,
+    gender TEXT NOT NULL,
+    name TEXT AS Name NOT NULL,
+    location TEXT AS Location NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    cell TEXT NOT NULL,
+    picture TEXT AS Picture NOT NULL
+);
+
+insert:
+  INSERT INTO randomUserEntity(gender, name, location, email, phone, cell, picture)
+  VALUES :randomUserEntity;
+
+update:
+  UPDATE randomUserEntity
+  SET gender = :gender, name = :name, location = :location, email = :email, phone = :phone, cell = :cell, picture = :picture
+  WHERE localId = :localId;
+
+upsert:
+  INSERT OR REPLACE INTO randomUserEntity(localId, gender, name, location, email, phone, cell, picture)
+  VALUES :randomUserEntity;
+
+getAllRandomUsers:
+SELECT *
+FROM randomUserEntity
+LIMIT :limit
+OFFSET :index;
+
+deleteAll:
+DELETE FROM randomUserEntity;
+
+getRandomUserById:
+SELECT *
+FROM randomUserEntity
+WHERE localId = :id;
+
+getRandomUserByName:
+SELECT *
+FROM randomUserEntity
+WHERE name = :name
+LIMIT 1;

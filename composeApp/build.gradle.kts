@@ -88,7 +88,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.hivian.kmp_mvvm"
+    namespace = "com.hivian.${rootProject.name.lowercase()}"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -96,7 +96,7 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "com.hivian.kmp_mvvm"
+        applicationId = "com.hivian.${rootProject.name.lowercase()}"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

@@ -1,4 +1,4 @@
-rootProject.name = "KMP-MVVM"
+rootProject.name = "RandomUsers"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
