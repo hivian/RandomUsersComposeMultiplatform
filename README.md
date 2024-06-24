@@ -18,35 +18,37 @@
   </a>
 </p>
 
-<p align="center">
-  A simple demo app built with Kotlin, targeting Android & iOS by using Compose Multiplatform, based on clean architecture and MVVM pattern. <br/>
-  Data fetched from https://randomuser.me api and saved to SQLDelight database.
-</p>
+
+A simple Android & iOS demo app built with Kotlin and <a href="https://www.jetbrains.com/lp/compose-multiplatform">Compose Multiplatform</a> for sharing UIs. <br/>
+Data fetched from https://randomuser.me api and saved to SQLDelight database.
+ 
+This project is the Kotlin Multiplatform copy of this <a href="https://github.com/hivian/RandomUsersComposeAndroid">Android project</a>
 
 ## Preview
 <p>
-  <img src="preview1.gif" width="270"/>
-  <img src="preview2.gif" width="270"/>
+  <img src="https://github.com/hivian/RandomUsersComposeAndroid/blob/master/preview1.gif" width="270"/>
+  <img src="https://github.com/hivian/RandomUsersComposeAndroid/blob/master/preview2.gif" width="270"/>
 </p>
 
 ## Features
 
 - [x] Offline mode
 - [x] Pagination: infinite scroll
-- [x] Reverse geocoding with Maps SDK
 - [x] Specific error messages with retry action
 - [x] Dark mode
 
 ## Tech stack
 
+* [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) - Cross-platform mobile development framework
+* [Compose Multiplatform](https://www.jetbrains.com/fr-fr/lp/compose-multiplatform) - UI sharing framework buit on top of Kotlin Multi Platform
 * [Compose](https://developer.android.com/jetpack/compose) - Declarative and simplified way for UI development
-* [Maps Compose](https://developers.google.com/maps/documentation/android-sdk/maps-compose) - Compose for the Google Maps SDK
 * [Koin](https://insert-koin.io/docs/quickstart/android/) - Dependency injection
-* [Navigation](https://developer.android.com/topic/libraries/architecture/navigation) - Screen routing handler
-* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - UI related data holder, lifecycle aware
-* [Room](https://developer.android.com/topic/libraries/architecture/room) - Local database
-* [Retrofit](https://square.github.io/retrofit/) - Networking client
+* [Compose Navigation](https://developer.android.com/develop/ui/compose/navigation?hl=fr) - Screen routing handler
+* [Compose ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - UI related data holder, lifecycle aware
+* [SQLDelight](https://cashapp.github.io/sqldelight/2.0.2/android_sqlite) - Local database
+* [Ktor](https://ktor.io) - Networking client
 * [Coroutines](https://developer.android.com/topic/libraries/architecture/coroutines) - Concurrency design pattern for asynchronous programming
+* [Coil](https://coil-kt.github.io/coil/) - Image loading library
 
 ## Architecture
 
