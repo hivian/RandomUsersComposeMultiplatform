@@ -36,6 +36,7 @@ This project is the Kotlin Multiplatform copy of that <a href="https://github.co
 - [x] Pagination: infinite scroll
 - [x] Specific error messages with retry action
 - [x] Dark mode
+- [ ] Reverse geocoding based on user location
 
 ## Tech stack
 
