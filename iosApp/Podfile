@@ -1,0 +1,3 @@
+target 'iosApp' do
+   pod 'GoogleMaps'
+end

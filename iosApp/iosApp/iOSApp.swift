@@ -1,12 +1,11 @@
+import UIKit
 import SwiftUI
-import ComposeApp
+import composeApp
 
 @main
 struct iOSApp: App {
 
-    init() {
-        KoinCommonKt.doInitKoin()
-    }
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
 	var body: some Scene {
 		WindowGroup {

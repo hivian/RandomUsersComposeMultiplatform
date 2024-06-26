@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.serialization)
@@ -33,6 +34,21 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+        }
+    }
+
+    cocoapods {
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        version = "1.0"
+        ios.deploymentTarget = "17.0"
+        podfile = project.file("../iosApp/Podfile")
+        framework {
+            baseName = "composeApp"
+            isStatic = true
+        }
+        pod("GoogleMaps"){
+            extraOpts += listOf("-compiler-option", "-fmodules")
         }
     }
     
@@ -66,8 +82,8 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
             // required by koin
             implementation(libs.stately.common)
-
-            implementation(libs.maps.compose)
+            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+            implementation(compose.components.resources)
         }
         androidMain.dependencies {
             implementation(compose.preview)
@@ -75,7 +91,10 @@ kotlin {
 
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.android.driver)
+
             implementation(libs.koin.android)
+
+            implementation(libs.maps.compose)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
