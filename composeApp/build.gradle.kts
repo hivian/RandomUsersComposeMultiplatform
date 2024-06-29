@@ -146,6 +146,7 @@ sqldelight {
         create("AppDatabase") {
             packageName.set("${android.namespace}.core.datasources.database")
         }
+        linkSqlite = true
     }
 }
 
