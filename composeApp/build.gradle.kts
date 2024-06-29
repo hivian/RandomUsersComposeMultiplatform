@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -10,6 +12,7 @@ plugins {
     alias(libs.plugins.serialization)
     alias(libs.plugins.sqldelight)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.buildKonfig)
 }
 
 kotlin {
@@ -149,5 +152,26 @@ sqldelight {
         linkSqlite = true
     }
 }
+
+buildkonfig {
+    packageName = "${android.namespace}"
+
+    defaultConfigs {
+        val googleMapsAndroidApiKey = "GOOGLE_MAPS_ANDROID_API_KEY"
+        val googleMapsIosApiKey = "GOOGLE_MAPS_IOS_API_KEY"
+        val androidApiKey: String = gradleLocalProperties(rootDir, providers).getProperty(googleMapsAndroidApiKey)
+        val iosApiKey: String = gradleLocalProperties(rootDir, providers).getProperty(googleMapsAndroidApiKey)
+
+        require(androidApiKey.isNotEmpty() && iosApiKey.isNotEmpty()) {
+            "Register your Google Maps api key and place it in local.properties"
+        }
+
+        buildConfigField(FieldSpec.Type.STRING, googleMapsAndroidApiKey, androidApiKey)
+        buildConfigField(FieldSpec.Type.STRING, googleMapsIosApiKey, iosApiKey)
+    }
+}
+
+
+
 
 

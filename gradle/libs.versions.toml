@@ -26,6 +26,7 @@ koin-compose = "1.2.0-Beta4"
 statelyCommon = "2.0.5"
 coil-compose = "3.0.0-alpha06"
 maps-compose = "5.0.3"
+build-konfig = "0.15.1"
 
 [libraries]
 kotlin-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomicfu" }
@@ -63,6 +64,7 @@ stately-common = { module = "co.touchlab:stately-common", version.ref = "stately
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil-compose"}
 coil-compose-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil-compose"}
 maps-compose = { module = "com.google.maps.android:maps-compose", version.ref = "maps-compose" }
+build-konfig = { module = "com.codingfeline.buildkonfig:buildkonfig-gradle-plugin", version.ref = "build-konfig" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -74,3 +76,4 @@ kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = 
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "build-konfig"}
