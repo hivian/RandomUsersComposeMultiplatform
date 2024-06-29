@@ -34,6 +34,9 @@ actual fun GoogleMapView(
             val mapView =  GMSMapView()
             camera?.let { mapWithFrame(frame = mapView.frame, camera = it) }
             mapView.settings.zoomGestures = true
+            mapView.settings.tiltGestures = false
+            mapView.settings.zoomGestures = false
+            mapView.settings.scrollGestures = false
             mapView.settings.consumesGesturesInView = true
             googleMapViewEntries.forEach { entry ->
                 GMSMarker().apply {

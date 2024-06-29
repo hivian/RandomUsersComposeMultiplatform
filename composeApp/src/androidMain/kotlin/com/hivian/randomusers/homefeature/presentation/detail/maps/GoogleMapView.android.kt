@@ -32,7 +32,10 @@ actual fun GoogleMapView(
     val mapUiSettings by remember {
         mutableStateOf(
             MapUiSettings(
-                zoomGesturesEnabled = true
+                tiltGesturesEnabled = false,
+                zoomControlsEnabled = false,
+                zoomGesturesEnabled = false,
+                scrollGesturesEnabled = false,
             )
         )
     }
@@ -40,7 +43,7 @@ actual fun GoogleMapView(
     GoogleMap(
         modifier = Modifier.fillMaxSize(),
         cameraPositionState = cameraPositionState,
-        uiSettings = mapUiSettings
+        uiSettings = mapUiSettings,
     ) {
         googleMapViewEntries.forEach { entry ->
             Marker(

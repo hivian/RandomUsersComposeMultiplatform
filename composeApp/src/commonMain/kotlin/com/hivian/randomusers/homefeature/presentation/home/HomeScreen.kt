@@ -17,13 +17,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -40,7 +41,6 @@ import coil3.request.crossfade
 import com.hivian.randomusers.core.domain.base.ViewModelVisualState
 import com.hivian.randomusers.core.presentation.navigation.NavigationAction
 import com.hivian.randomusers.homefeature.domain.models.RandomUser
-import com.hivian.randomusers.homefeature.presentation.themes.LocalCustomColorPalette
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.koin.compose.viewmodel.koinViewModel
@@ -78,6 +78,7 @@ fun HomeScreen(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun HomeContent(
@@ -86,8 +87,8 @@ fun HomeContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                backgroundColor = LocalCustomColorPalette.current.toolbarBackgroundColor,
-                contentColor = LocalCustomColorPalette.current.toolbarContentColor,
+                /*backgroundColor = LocalCustomColorPalette.current.toolbarBackgroundColor,
+                contentColor = LocalCustomColorPalette.current.toolbarContentColor,*/
                 title = { Text(text = viewModelArg.title.value) },
             )
         }
@@ -127,7 +128,7 @@ fun InitErrorView(
     onRetry : () -> Unit = {}
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = errorViewArgs.errorMessage, style = MaterialTheme.typography.body1)
+        Text(text = errorViewArgs.errorMessage, style = MaterialTheme.typography.bodyMedium)
         Button(
             modifier = Modifier.padding(top = 8.dp),
             onClick = { onRetry() }
@@ -182,8 +183,8 @@ fun UserListItem(user: RandomUser, onItemClick : (Int) -> Unit) {
                     .padding(start = 12.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Text(text = user.fullName, style = MaterialTheme.typography.h6)
-                Text(text = user.email, style = MaterialTheme.typography.body2)
+                Text(text = user.fullName, style = MaterialTheme.typography.headlineSmall)
+                Text(text = user.email, style = MaterialTheme.typography.bodySmall)
             }
         }
     }

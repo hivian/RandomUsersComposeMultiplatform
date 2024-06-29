@@ -13,11 +13,11 @@ androidx-test-junit = "1.1.5"
 atomicfu = "0.24.0"
 compose-plugin = "1.6.11"
 junit = "4.13.2"
-kotlin = "2.0.0"
+kotlin = "2.0.20-Beta1"
 room = "2.7.0-alpha04"
 sqlite = "2.5.0-alpha04"
 sqldelight = "2.0.2"
-ksp = "2.0.0-1.0.21"
+ksp = "2.0.20-Beta1-1.0.22"
 kotlinx = "1.7.0"
 navigation-compose = "2.7.0-alpha06"
 ktor-client = "2.3.11"
@@ -72,6 +72,5 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-room = { id = "androidx.room", version.ref = "room" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
