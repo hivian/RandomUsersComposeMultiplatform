@@ -29,13 +29,16 @@ actual fun GoogleMapView(
                 )
             } else null
 
-            val mapView =  GMSMapView()
-            camera?.let { mapWithFrame(frame = mapView.frame, camera = it) }
-            mapView.settings.zoomGestures = true
-            mapView.settings.tiltGestures = false
-            mapView.settings.zoomGestures = false
-            mapView.settings.scrollGestures = false
-            mapView.settings.consumesGesturesInView = true
+            val mapView = GMSMapView()
+            camera?.let {
+                mapWithFrame(frame = mapView.frame, camera = it)
+            }
+            mapView.settings.apply {
+                zoomGestures = true
+                tiltGestures = false
+                zoomGestures = false
+                scrollGestures = false
+            }
             googleMapViewEntries.forEach { entry ->
                 GMSMarker().apply {
                     this.position = CLLocationCoordinate2DMake(
@@ -45,7 +48,6 @@ actual fun GoogleMapView(
                     this.title = entry.title
                     this.snippet = entry.snippet
                     markerImageWithColor(UIColor.redColor)
-//                    this.markerImageWithColor(color = UIColor.redColor)
                 }.map = mapView
             }
             mapView
