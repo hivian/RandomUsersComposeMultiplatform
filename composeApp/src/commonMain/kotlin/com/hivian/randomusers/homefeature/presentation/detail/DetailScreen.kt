@@ -9,21 +9,23 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -38,7 +40,8 @@ import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.hivian.randomusers.core.presentation.navigation.NavigationAction
-import com.hivian.randomusers.homefeature.presentation.themes.LocalCustomColorPalette
+import com.hivian.randomusers.homefeature.presentation.detail.maps.GoogleMapView
+import com.hivian.randomusers.homefeature.presentation.detail.maps.GoogleMapViewEntries
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -83,6 +86,7 @@ fun DetailScreen(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun DetailContent(
@@ -91,8 +95,8 @@ fun DetailContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                backgroundColor = LocalCustomColorPalette.current.toolbarBackgroundColor,
-                contentColor = LocalCustomColorPalette.current.toolbarContentColor,
+                /*backgroundColor = LocalCustomColorPalette.current.toolbarBackgroundColor,
+                contentColor = LocalCustomColorPalette.current.toolbarContentColor,*/
                 title = { Text(text = viewModelArg.name.value) },
                 navigationIcon = {
                     IconButton(
@@ -159,7 +163,7 @@ fun ImageDetail(imageUrlPath : String) {
             modifier = Modifier
                 .fillMaxSize()
                 .clip(CircleShape)
-                .border(1.dp, MaterialTheme.colors.primary, CircleShape)
+                .border(1.dp, MaterialTheme.colorScheme.primary, CircleShape)
         )
     }
 }
@@ -191,13 +195,13 @@ fun UserInfoItem(drawableStart: DrawableResource, text: String) {
         Image(
             painter = painterResource(resource = drawableStart),
             contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
         )
         Text(
             modifier = Modifier.padding(start = 8.dp),
             text = text,
-            color = MaterialTheme.colors.onSurface,
-            style = MaterialTheme.typography.body1,
+            //color = MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.titleMedium,
         )
     }
 }
@@ -206,7 +210,14 @@ fun UserInfoItem(drawableStart: DrawableResource, text: String) {
 fun GoogleMapAddress(
     latitude: Double, longitude: Double, city: String, country: String
 ) {
-    /*val location = LatLng(latitude, longitude)
+    val mapViewEntries = arrayOf(
+        GoogleMapViewEntries(
+            lat = latitude,
+            lng = longitude,
+            title = city,
+            snippet = country
+        )
+    )
 
     Card(
         modifier = Modifier
@@ -215,24 +226,11 @@ fun GoogleMapAddress(
             .padding(16.dp),
         shape = RoundedCornerShape(8.dp)
     ) {
-        GoogleMap(
-            cameraPositionState = CameraPositionState(
-                position = CameraPosition.fromLatLngZoom(location, 8f)
-            ),
+        GoogleMapView(
             modifier = Modifier.fillMaxSize(),
-            uiSettings = MapUiSettings(
-                tiltGesturesEnabled = false,
-                zoomControlsEnabled = false,
-                zoomGesturesEnabled = false,
-                scrollGesturesEnabled = false,
-            )
-        ) {
-            Marker(
-                state = MarkerState(position = location),
-                title = city,
-                snippet = country
-            )
-        }
-    }*/
+            googleMapViewEntries = mapViewEntries,
+            zoom = 8f
+        )
+    }
 
 }

@@ -30,6 +30,10 @@ This project is the Kotlin Multiplatform copy of that <a href="https://github.co
   <img src="https://github.com/hivian/RandomUsersComposeAndroid/blob/master/preview2.gif" width="270"/>
 </p>
 
+## Configuration
+
+Add your `GOOGLE_MAPS_ANDROID_API_KEY` to the `local.properties` root file and `GOOGLE_MAPS_IOS_API_KEY` to a new plist file named `Secrets.plist` in `iosApp` directory.
+
 ## Features
 
 - [x] Offline mode

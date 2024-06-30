@@ -35,3 +35,7 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Xcode file
+.DS_Store
+Secrets.plist

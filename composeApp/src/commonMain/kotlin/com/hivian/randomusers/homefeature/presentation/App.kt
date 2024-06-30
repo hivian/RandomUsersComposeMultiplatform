@@ -2,11 +2,11 @@ package com.hivian.randomusers.homefeature.presentation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.SnackbarHost
-import androidx.compose.material.SnackbarHostState
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -53,7 +53,7 @@ fun App(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it),
-                color = MaterialTheme.colors.background
+                color = MaterialTheme.colorScheme.background
             ) {
                 InitNavController()
                 userInteractionService.snackbarHostState = snackbarHostState

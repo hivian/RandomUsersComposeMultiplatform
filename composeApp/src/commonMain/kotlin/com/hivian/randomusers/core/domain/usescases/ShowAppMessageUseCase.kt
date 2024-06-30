@@ -1,6 +1,6 @@
 package com.hivian.randomusers.core.domain.usescases
 
-import androidx.compose.material.SnackbarDuration
+import androidx.compose.material3.SnackbarDuration
 import com.hivian.randomusers.core.domain.services.IUserInteractionService
 
 class ShowAppMessageUseCase(

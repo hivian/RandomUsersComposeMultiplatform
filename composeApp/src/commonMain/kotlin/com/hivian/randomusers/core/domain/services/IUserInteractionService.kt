@@ -1,7 +1,7 @@
 package com.hivian.randomusers.core.domain.services
 
-import androidx.compose.material.SnackbarDuration
-import androidx.compose.material.SnackbarHostState
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
 
 interface IUserInteractionService {
 
