@@ -39,3 +39,4 @@ google-services.json
 # Xcode file
 .DS_Store
 Secrets.plist
+xcuserdata/
