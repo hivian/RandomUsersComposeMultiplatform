@@ -27,9 +27,7 @@ actual fun GoogleMapView(
                     longitude = googleMapViewEntries.first().lng,
                     zoom = zoom
                 )
-            }else{
-                null
-            }
+            } else null
 
             val mapView =  GMSMapView()
             camera?.let { mapWithFrame(frame = mapView.frame, camera = it) }

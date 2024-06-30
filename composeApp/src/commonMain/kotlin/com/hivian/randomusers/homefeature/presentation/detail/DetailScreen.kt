@@ -210,7 +210,8 @@ fun UserInfoItem(drawableStart: DrawableResource, text: String) {
 fun GoogleMapAddress(
     latitude: Double, longitude: Double, city: String, country: String
 ) {
-    val mapViewEntries = arrayOf(GoogleMapViewEntries(
+    val mapViewEntries = arrayOf(
+        GoogleMapViewEntries(
             lat = latitude,
             lng = longitude,
             title = city,
