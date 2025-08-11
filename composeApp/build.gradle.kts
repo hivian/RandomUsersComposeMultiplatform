@@ -1,3 +1,5 @@
+
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -6,9 +8,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.serialization)
     alias(libs.plugins.sqldelight)
-    alias(libs.plugins.room)
     alias(libs.plugins.ksp)
 }
 
@@ -21,7 +23,7 @@ kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     
@@ -33,6 +35,25 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            freeCompilerArgs += listOf(
+                "-Xbinary=bundleId=com.hivian.randomusers"
+            )
+        }
+    }
+
+    cocoapods {
+        version = "1.15.2"
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        ios.deploymentTarget = "17.0"
+        podfile = project.file("../iosApp/Podfile")
+        framework {
+            baseName = "composeApp"
+            isStatic = true
+        }
+        pod("GoogleMaps") {
+            version = "9.0.0"
+            extraOpts += listOf("-compiler-option", "-fmodules")
         }
     }
     
@@ -40,14 +61,12 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinx.serialization)
 
-            implementation(libs.room.runtime)
-            implementation(libs.sqlite.bundled)
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.primitive)
 
@@ -66,8 +85,6 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
             // required by koin
             implementation(libs.stately.common)
-
-            implementation(libs.maps.compose)
         }
         androidMain.dependencies {
             implementation(compose.preview)
@@ -75,7 +92,10 @@ kotlin {
 
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.android.driver)
+
             implementation(libs.koin.android)
+
+            implementation(libs.maps.compose)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -100,6 +120,12 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 100
         versionName = "1.0.0"
+
+        val googleMapsAndroidApiKeyName = "GOOGLE_MAPS_ANDROID_API_KEY"
+        val googleMapsAndroidApiKeyValue: String = gradleLocalProperties(
+            rootDir, providers
+        ).getProperty(googleMapsAndroidApiKeyName)
+        manifestPlaceholders[googleMapsAndroidApiKeyName] = googleMapsAndroidApiKeyValue
     }
     packaging {
         resources {
@@ -112,19 +138,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.4"
+    }
     dependencies {
         debugImplementation(compose.uiTooling)
     }
-}
-
-room {
-    schemaDirectory("$projectDir/schemas")
 }
 
 sqldelight {
@@ -132,17 +157,6 @@ sqldelight {
         create("AppDatabase") {
             packageName.set("${android.namespace}.core.datasources.database")
         }
+        linkSqlite = true
     }
 }
-
-dependencies {
-    //ksp(libs.room.compiler)
-    add("kspCommonMainMetadata", libs.room.compiler)
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
-    if (name != "kspCommonMainKotlinMetadata" ) {
-        dependsOn("kspCommonMainKotlinMetadata")
-    }
-}
-
