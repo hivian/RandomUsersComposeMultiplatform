@@ -7,7 +7,7 @@
   <a href="https://kotlinlang.org/docs/whatsnew18.html">
     <img src="https://img.shields.io/badge/kotlin-2.1.20-blue" alt="Kotlin Version">
   </a>
-  <a href="https://docs.gradle.org/8.8.2/release-notes.html">
+  <a href="https://docs.gradle.org/8.8/release-notes.html">
     <img src="https://img.shields.io/badge/gradle-8.8.2-blue" alt="Gradle">
   </a>
   <a href="https://android-arsenal.com/api?level=24">
