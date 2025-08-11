@@ -5,13 +5,13 @@
     <img src="https://img.shields.io/badge/compose-1.6.11-brightgreen" alt="Compose Version">
   </a>
   <a href="https://kotlinlang.org/docs/whatsnew18.html">
-    <img src="https://img.shields.io/badge/kotlin-2.0.0-blue" alt="Kotlin Version">
+    <img src="https://img.shields.io/badge/kotlin-2.1.20-blue" alt="Kotlin Version">
   </a>
-  <a href="https://docs.gradle.org/8.0.2/release-notes.html">
-    <img src="https://img.shields.io/badge/gradle-8.4.2-blue" alt="Gradle">
+  <a href="https://docs.gradle.org/8.8.2/release-notes.html">
+    <img src="https://img.shields.io/badge/gradle-8.8.2-blue" alt="Gradle">
   </a>
-  <a href="https://android-arsenal.com/api?level=27">
-    <img src="https://img.shields.io/badge/API-27%2B-blue" alt="API">
+  <a href="https://android-arsenal.com/api?level=24">
+    <img src="https://img.shields.io/badge/API-24%2B-blue" alt="API">
   </a>
   <a href="https://github.com/hivian/Android-Compose-MVVM/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
