@@ -3,6 +3,7 @@ package com.hivian.randomusers.core.domain.extensions
 
 import com.hivian.randomusers.core.datasources.remote.ErrorType
 import org.jetbrains.compose.resources.StringResource
+
 import randomuserscomposemultiplatform.composeapp.generated.resources.Res
 import randomuserscomposemultiplatform.composeapp.generated.resources.error_access_denied
 import randomuserscomposemultiplatform.composeapp.generated.resources.error_cancelled

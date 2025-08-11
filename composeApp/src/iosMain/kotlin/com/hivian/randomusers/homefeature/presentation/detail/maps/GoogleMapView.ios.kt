@@ -9,6 +9,8 @@ import cocoapods.GoogleMaps.GMSMapView
 import cocoapods.GoogleMaps.GMSMapView.Companion.mapWithFrame
 import cocoapods.GoogleMaps.GMSMarker
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.cValue
+import platform.CoreGraphics.CGRectZero
 import platform.CoreLocation.CLLocationCoordinate2DMake
 import platform.UIKit.UIColor
 
@@ -29,10 +31,9 @@ actual fun GoogleMapView(
                 )
             } else null
 
-            val mapView = GMSMapView()
-            camera?.let {
-                mapWithFrame(frame = mapView.frame, camera = it)
-            }
+            val mapView = camera?.let {
+                mapWithFrame(frame = cValue { CGRectZero }, camera = it)
+            }?: GMSMapView()
             mapView.settings.apply {
                 zoomGestures = true
                 tiltGestures = false
