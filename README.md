@@ -10,7 +10,7 @@
   <a href="https://docs.gradle.org/8.8/release-notes.html">
     <img src="https://img.shields.io/badge/gradle-8.8.2-blue" alt="Gradle">
   </a>
-  <a href="https://android-arsenal.com/api?level=24">
+  <a href="https://developer.android.com/about/versions/nougat/android-7.0">
     <img src="https://img.shields.io/badge/API-24%2B-blue" alt="API">
   </a>
   <a href="https://github.com/hivian/Android-Compose-MVVM/blob/master/LICENSE">
