@@ -1,6 +1,5 @@
 
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -21,7 +20,6 @@ kotlin {
     }
 
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
         }
@@ -66,6 +64,8 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinx.serialization)
+            implementation(libs.material.icons.core)
+            implementation(libs.material.icons.extended)
 
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.primitive)
@@ -80,7 +80,6 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.logging)
 
-            implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             // required by koin
